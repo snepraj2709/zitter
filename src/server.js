@@ -1,6 +1,8 @@
 import { Server, Model, RestSerializer } from "miragejs";
 import { posts } from "./backend/db/posts";
 import { users } from "./backend/db/users";
+//import { createServer, Response } from 'miragejs';
+
 import {
   loginHandler,
   signupHandler,
@@ -53,7 +55,7 @@ export function makeServer({ environment = "development" } = {}) {
     },
 
     routes() {
-      this.namespace = "api";
+      this.namespace = "/api";
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
@@ -87,6 +89,9 @@ export function makeServer({ environment = "development" } = {}) {
         "/users/unfollow/:followUserId/",
         unfollowUserHandler.bind(this)
       );
+
+      // If you want to passthrough requests that are not handled by MirageJS
+      this.passthrough();
     },
   });
 }
