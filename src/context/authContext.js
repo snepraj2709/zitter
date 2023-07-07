@@ -38,11 +38,10 @@ export const AuthProvider = ({ children }) => {
           loginUser: foundUser,
           token: encodedToken,
         });
-        toast.success(`Welcome back, ${foundUser}!`);
+        toast.success(`Welcome back, ${foundUser.firstName}!`);
         navigate(location?.state?.from?.pathname, "/", { replace: true });
-      }
-      if (status === 404) {
-        toast.message(
+      } else if (status === 404) {
+        toast.error(
           "The username you entered is not Registered, Please Signup before Login"
         );
       }
@@ -61,28 +60,28 @@ export const AuthProvider = ({ children }) => {
         data: { createdUser, encodedToken },
         status,
       } = await SignUpService({ username, password, firstName, lastName });
+      console.log("createdUser", createdUser);
       if (status === 200 || status === 201) {
         // saving the loginItems in the localStorage
         localStorage.setItem(
           "loginItems",
           JSON.stringify({
             token: encodedToken,
-            loginUser: loginItems.loginUser,
+            loginUser: createdUser,
           })
         );
+        setLoginItems({
+          ...loginItems,
+          loginUser: createdUser,
+          token: encodedToken,
+        });
+
+        //welcome loginUser with toast
+        toast.success(`Hi, ${createdUser.firstName}!`, {
+          icon: "👋",
+        });
+        navigate("/", { replace: true });
       }
-
-      setLoginItems({
-        ...loginItems,
-        loginUser: createdUser,
-        token: encodedToken,
-      });
-
-      //welcome loginUser with toast
-      toast.success(`Hi, ${createdUser.firstName}!`, {
-        icon: "👋",
-      });
-      navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong! Please try again");
