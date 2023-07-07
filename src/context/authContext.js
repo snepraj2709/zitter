@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         data: { foundUser, encodedToken },
         status,
       } = await LoginService({ username, password });
-      //console.log('Found loginUser', foundUser);
+      console.log("Found loginUser", foundUser, status);
       if (status === 200 || status === 201) {
         localStorage.setItem(
           "loginItems",
@@ -40,6 +40,11 @@ export const AuthProvider = ({ children }) => {
         });
         toast.success(`Welcome back, ${foundUser}!`);
         navigate(location?.state?.from?.pathname, "/", { replace: true });
+      }
+      if (status === 404) {
+        toast.message(
+          "The username you entered is not Registered, Please Signup before Login"
+        );
       }
     } catch (e) {
       console.error(e);
