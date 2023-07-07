@@ -159,7 +159,7 @@ export const UserProvider = ({ children }) => {
 
   const searchedUsers =
     userState.searchInput &&
-    userState.allUser.filter((user) =>
+    userState.allUsers?.filter((user) =>
       user.username.toLowerCase().includes(userState.searchInput.toLowerCase())
     );
 
