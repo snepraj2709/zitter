@@ -1,4 +1,11 @@
-export const DefaultUserAvatar = "https://picsum.photos/200/300?random=1";
+export const DefaultUserAvatar =
+  "https://res.cloudinary.com/dqg4mckho/image/upload/v1688744337/Zitter-project-2/profile-pic-5_qowily.jpg";
+
+export const defaulCoverPic =
+  "https://res.cloudinary.com/dqg4mckho/image/upload/v1688744950/Zitter-project-2/canva-black-flatlay-photo-motivational-finance-quote-facebook-cover-myVl9DXwcjQ_vqv1pw.jpg";
+
+export const zitterLogo =
+  "https://res.cloudinary.com/dqg4mckho/image/upload/v1688745954/Zitter-project-2/zitter-logo_zgqnln.png";
 
 export const ActionTypes = {
   //user actions
