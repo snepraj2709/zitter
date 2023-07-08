@@ -5,8 +5,8 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 export default function Login() {
   const { token, loginHandler } = useAuth();
   const defaultLoginCred = {
-    username: 'adarshbalika',
-    password: 'adarshBalika123'
+    username: 'emilysmith',
+    password: 'emily@123Smith'
   };
 
   const [login, setLogin] = useState({ username: '', password: '' });

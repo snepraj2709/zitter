@@ -52,9 +52,9 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const fetchSingleUser = async (userId) => {
+  const fetchSingleUser = async (username) => {
     try {
-      const { status, data } = await getSingleUserByUserId(userId);
+      const { status, data } = await getSingleUserByUserId(username);
       if (status === 200 || status === 201) {
         userDispatch({ type: GetSingleUserByUserId, payload: data.user });
       }
@@ -163,6 +163,9 @@ export const UserProvider = ({ children }) => {
       user.username.toLowerCase().includes(userState.searchInput.toLowerCase())
     );
 
+  const postAlreadyBookmarked = (postId) =>
+    userState?.bookmarks?.find((id) => id === postId);
+
   useEffect(() => {
     fetchAllUsersData();
     if (token) {
@@ -185,6 +188,7 @@ export const UserProvider = ({ children }) => {
         followUserHandler,
         unfollowUserHandler,
         searchedUsers,
+        postAlreadyBookmarked,
       }}>
       {children}
     </UserContext.Provider>

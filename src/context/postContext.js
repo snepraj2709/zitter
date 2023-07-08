@@ -121,9 +121,9 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  const likePostHandler = async (postId) => {
+  const likePostHandler = async (postId, token) => {
     try {
-      const { status, data } = await likePost(postId);
+      const { status, data } = await likePost(postId, token);
       if (status === 200 || status === 201) {
         postDispatch({ type: LikePost, payload: data.posts });
         toast.success("Post liked");
@@ -141,9 +141,9 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  const dislikePostHandler = async (postId) => {
+  const dislikePostHandler = async (postId, token) => {
     try {
-      const { status, data } = await dislikePost(postId);
+      const { status, data } = await dislikePost(postId, token);
       if (status === 200 || status === 201) {
         postDispatch({ type: DislikePost, payload: data.posts });
         toast.success("Removed like from Post");
