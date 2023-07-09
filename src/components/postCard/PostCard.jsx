@@ -7,7 +7,10 @@ import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 
 export function PostCard({post}){
-    const {_id,id,content,mediaURL,mediaAlt,username,likes:{likeCount,likedBy},comments,createdAt} = post;
+    const {_id,id,content,mediaURL,mediaAlt,username,likes,comments,createdAt} = post;
+
+    console.log('POST',post);
+
     const {loginUser,token}=useAuth();
     const {userState:{allUsers},addBookmarkHandler,removeBookmarkHandler,postAlreadyBookmarked}=useUser();
     const {deletePostHandler,editPostHandler,fetchSinglePost,likePostHandler,dislikePostHandler,postLikedByLoggedUser}=usePost();
@@ -49,7 +52,7 @@ export function PostCard({post}){
 								}/>
                                ) :<FiHeart onClick={()=>likePostHandler(_id,token)}/>
                             }
-							<>{likeCount>0 && <>{likeCount}</>}</>
+							<>{likes?.likeCount>0 && <>{likes?.likeCount}</>}</>
 						</div>
 						<div className='flex flex-row' >
                             <FaComment/>
