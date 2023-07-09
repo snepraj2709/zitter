@@ -15,7 +15,7 @@ export function SearchedUserModal() {
           <div
             key={user._id}
             onClick={() => {
-              navigate(`/user/${user.username}`);
+              navigate(`/profile/${user.username}`);
               userDispatch({ type: SearchUser, payload: "" });
             }}
             className="bg-gray-800 flex flex-row items-center justify-center text-white p-2 cursor-pointer w-48 rounded"

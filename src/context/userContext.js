@@ -167,10 +167,13 @@ export const UserProvider = ({ children }) => {
   const postAlreadyBookmarked = (postId) =>
     userState?.bookmarks?.find((id) => id === postId);
 
+  console.log("token", token);
+
   useEffect(() => {
     fetchAllUsersData();
     if (token) {
-      fetchBookmarkPosts();
+      const bookmarkPosts = fetchBookmarkPosts(token);
+      console.log("bookmarkPosts"), bookmarkPosts;
     }
   }, [token]);
 

@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom';
 export function PostCard({post}){
     const {_id,id,content,mediaURL,mediaAlt,username,likes,comments,createdAt} = post;
 
-    console.log('POST',post);
-
     const {loginUser,token}=useAuth();
     const {userState:{allUsers},addBookmarkHandler,removeBookmarkHandler,postAlreadyBookmarked}=useUser();
     const {deletePostHandler,editPostHandler,fetchSinglePost,likePostHandler,dislikePostHandler,postLikedByLoggedUser}=usePost();

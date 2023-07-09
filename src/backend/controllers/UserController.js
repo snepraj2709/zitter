@@ -90,8 +90,6 @@ export const editUserHandler = function (schema, request) {
 
 export const getBookmarkPostsHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
-  //const user = requiresAuth(request);
-  //console.log('User from getBookmarkPostsHandler', user);
   try {
     if (!user) {
       return new Response(
@@ -104,13 +102,13 @@ export const getBookmarkPostsHandler = function (schema, request) {
         }
       );
     }
-    return new Response(200, {}, { bookmarks: user?.bookmarks });
+    return new Response(200, {}, { bookmarks: user.bookmarks });
   } catch (error) {
     return new Response(
       500,
       {},
       {
-        error: error.message,
+        error,
       }
     );
   }
