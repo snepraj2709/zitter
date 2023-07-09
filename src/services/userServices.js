@@ -7,12 +7,14 @@ export const getSingleUserByUserId = async (userId) =>
   await axios.get(`/api/users/${userId}`);
 
 //bookmark post, unbookmark
-export const getAllBookmarkPost = async ({ encodedToken }) => {
+export const getAllBookmarkPost = async (encodedToken) => {
+  console.log(encodedToken);
   try {
     const response = await fetch(`/api/users/bookmark/`, {
       headers: { authorization: encodedToken },
     });
     const data = await response.json();
+    console.log("data", data);
     return data;
   } catch (e) {
     console.log(e);

@@ -1,12 +1,11 @@
-import { useAuth } from "../../context/authContext";
 import { usePost } from "../../context/postContext";
 import {Sidebar} from '../../components/sidebar/Sidebar'
 import {Searchbar} from '../../components/search/Searchbar';
 import {PostCard} from '../../components/postCard/PostCard';
 
 export default function Explore(){
-     const {loginUser}=useAuth();
-    const {isLoading,postState:{allPosts,filterType},postDispatch}=usePost();
+    
+    const {postState:{allPosts}}=usePost();
 
   return (
     <div className="flex">

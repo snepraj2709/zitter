@@ -80,9 +80,10 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const fetchBookmarkPosts = async () => {
+  const fetchBookmarkPosts = async (token) => {
     try {
-      const { status, data } = await getAllBookmarkPost();
+      const { status, data } = await getAllBookmarkPost(token);
+      console.log("data from fetchBookmarkPosts", data);
       if (status === 200 || status === 201) {
         userDispatch({ type: GetBookmarkPostsByUser, payload: data.bookmarks });
       }
