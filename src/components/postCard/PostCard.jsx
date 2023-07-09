@@ -53,7 +53,7 @@ export function PostCard({post}){
 						</div>
 						<div className='flex flex-row' >
                             <FaComment/>
-							<>{comments.length}</>
+							<>{comments?.length}</>
 						</div>
 						<div className='flex flex-row'>
                             {

@@ -3,12 +3,13 @@ import { useAuth } from '../../context/authContext';
 import {usePost} from '../../context/postContext';
 import {Searchbar} from '../../components/search/Searchbar'
 import {PostCard} from '../../components/postCard/PostCard';
+import { NewPost } from '../../components/newPost/NewPost';
 
 export default function Home() {
 
     const {loginUser}=useAuth();
     const {isLoading,postState:{allPosts,filterType},postDispatch}=usePost();
-    
+
  console.log('loginUser',loginUser)
 
     const postsOfFollowers =allPosts.filter((post)=>(
@@ -24,8 +25,9 @@ export default function Home() {
           <Sidebar />
         </aside>
       </div>
-      <div className="w-2/4 border border-gray-700">
+      <div className="w-2/4 border border-gray-700 md:items-center">
         <Searchbar/>
+        <NewPost/>
         {postsOfFollowers.length!==0?
           postsOfFollowers.map((post)=>(
             <div key={post._id}>

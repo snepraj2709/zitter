@@ -75,7 +75,6 @@ export const PostProvider = ({ children }) => {
       );
       if (status === 200 || status === 201) {
         postDispatch({ type: CreateNewPost, payload: data.posts });
-        toast.success("Post created successfully!");
       }
     } catch (e) {
       console.log(e);
