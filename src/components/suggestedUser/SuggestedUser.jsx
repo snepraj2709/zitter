@@ -9,14 +9,12 @@ export const SuggestedUser = () => {
   const navigate = useNavigate();
 
   const usersNotFollowedByLoginUser = allUsers.filter((user) => {
-    return !user.followers.some((follower) => follower.username === loginUser.username);
-  });
-
-  console.log('usersNotFollowedByLoginUser',usersNotFollowedByLoginUser)
+  return user.username !== loginUser.username && !user.followers.some((follower) => follower.username === loginUser.username);
+});
 
   return (
-    <div>
-      <h1 className="flex flex-col content-center">Suggested User</h1>
+    <div className="sticky top-0">
+      <h1 className="flex flex-col font-bold text-2xl p-2">Suggested User</h1>
       <div>
         {usersNotFollowedByLoginUser.length > 0 ? (
           usersNotFollowedByLoginUser.map((user) => (
@@ -25,14 +23,14 @@ export const SuggestedUser = () => {
               onClick={() => {
                 navigate(`/profile/${user?.username}`);
               }}
-              className=" flex flex-row items-center justify-center text-white p-2 cursor-pointer w-56 rounded border"
+              className=" flex flex-row items-center justify-between text-white p-2 cursor-pointer w-56 rounded border shadow shadow-blue-500/40 hover:shadow-indigo-500/40"
             >
               <UserAvatar user={user} />
               <div className="mt-2 flex flex-col m-1 text-left">
                 <span className="text-sm text-gray-800">{user?.firstName + " " + user?.lastName}</span>
                 <span className="text-sm text-gray-800">{user?.username}</span>
               </div>
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded mr-2" onClick={()=>followUserHandler(user?._id,token)}>
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded-lg mr-2 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onClick={()=>followUserHandler(user?._id,token)}>
                     Follow
                   </button>
             </div>
