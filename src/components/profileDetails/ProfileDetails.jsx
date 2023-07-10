@@ -17,6 +17,10 @@ export function ProfileDetails({ user, totalPosts }) {
     setEditProfileModal(true)
   }
 
+  const closeModal=()=>{
+    setEditProfileModal(false)
+  }
+
   return (
     <div className="container mx-auto">
       <div className="flex flex-row items-center p-4">
@@ -49,7 +53,7 @@ export function ProfileDetails({ user, totalPosts }) {
       </div>
       {
         editProfileModal && <div>
-            <EditProfileModal profile={user}/>
+            <EditProfileModal profile={user} onClose={closeModal}/>
         </div>
       }
     </div>

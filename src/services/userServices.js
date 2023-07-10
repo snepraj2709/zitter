@@ -51,7 +51,8 @@ export const unfollowUserService = async (followUserId, token) =>
   );
 
 export const editUserProfile = async (editedDetails, token) =>
-  await axios.post(`/api/users/edit`, {
-    loginItems: editedDetails,
-    headers: { authorization: token },
-  });
+  await axios.post(
+    "/api/users/edit",
+    { userData: editedDetails },
+    { headers: { authorization: token } }
+  );
