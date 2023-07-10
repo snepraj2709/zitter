@@ -1,4 +1,4 @@
-import { MdExplore, MdAddCircle, MdCancel } from "react-icons/md";
+import { MdExplore, MdAddCircle, MdCancel, MdLogout } from "react-icons/md";
 import { AiFillHome } from "react-icons/ai";
 import {
   BiSolidBookmark,
@@ -37,4 +37,5 @@ export {
   FaArrowDown,
   FaArrowUp,
   FaFire,
+  MdLogout,
 };

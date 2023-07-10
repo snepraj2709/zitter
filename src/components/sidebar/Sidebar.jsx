@@ -1,11 +1,11 @@
 import { Link, NavLink } from 'react-router-dom'
-import {AiFillHome,MdExplore,BiSolidBookmark,BiSolidUser,MdAddCircle,BsThreeDots} from '../../utils/icons'
+import {AiFillHome,MdExplore,BiSolidBookmark,BiSolidUser,MdAddCircle,BsThreeDots,MdLogout} from '../../utils/icons'
 import { useAuth } from '../../context/authContext'
 import { zitterLogo } from '../../utils/constants';
 import { UserAvatar } from '../UserAvatar';
 
 export  function Sidebar(){
-const {loginUser}=useAuth();
+const {loginUser,logoutHandler}=useAuth();
 
     return(
         <aside  className="sticky top-0">
@@ -43,22 +43,22 @@ const {loginUser}=useAuth();
                 </NavLink>
                 </li>
 
-                <li className="flex items-center">
+                {/* <li className="flex items-center">
                 <NavLink className="flex items-center">
                     <button className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md">
                     <MdAddCircle className="w-6 h-6" />
                     <span className="ml-2">New Post</span>
                     </button>
                 </NavLink>
-                </li>
+                </li> */}
 
                 <li className="flex items-center justify-center space-x-4 py-2">
                 <UserAvatar user={loginUser} />
-                <div className="flex flex-col hidden text-sm lg:inline">
+                <div className="flex flex-col text-sm lg:inline">
                     <p className="font-bold text-gray-900">{loginUser?.firstName} {loginUser?.lastName}</p>
                     <p className="font-normal text-gray-500">{loginUser?.username}</p>
                 </div>
-                <BsThreeDots className="ml-4 hidden lg:inline hover:scale-105" />
+                <MdLogout className="ml-4 hidden lg:inline hover:scale-105" onClick={logoutHandler}/>
                 </li>
             </ul>  
         </aside>
