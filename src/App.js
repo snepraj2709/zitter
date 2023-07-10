@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/bookmark" element={<Bookmark />} />
           <Route path="/profile/:username" element={<Profile />} />
-          <Route path="/post:postId" element={<PostDetails />} />
+          <Route path="/post/:postId" element={<PostDetails />} />
         </Route>
         <Route path="/*" element={<NotFound />} />
       </Routes>

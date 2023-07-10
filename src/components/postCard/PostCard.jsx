@@ -7,7 +7,7 @@ import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 
 export function PostCard({post}){
-    const {_id,id,content,mediaURL,mediaAlt,username,likes,comments,createdAt} = post;
+    const {_id,content,mediaURL,mediaAlt,username,likes,comments,createdAt} = post;
 
     const {loginUser,token}=useAuth();
     const {userState:{allUsers},addBookmarkHandler,removeBookmarkHandler,postAlreadyBookmarked}=useUser();
@@ -35,7 +35,7 @@ export function PostCard({post}){
 					<div
                         onClick={() => {
                             fetchSinglePost(_id);
-                            navigate(`/post/${id}`);
+                            navigate(`/post/${_id}`);
                         }}
                         >
                         <img src={mediaURL} alt={mediaAlt}/>
