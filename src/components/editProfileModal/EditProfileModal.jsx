@@ -28,17 +28,13 @@ export function EditProfileModal({profile,onClose}) {
 
 
   return (
-    <div className="bg-gray-200 w-56 rounded items-center">
-      
+    <div className="bg-gray-200 w-56 rounded items-center">  
         <div className="flex flex-row">
             <div className="flex flex-row justify-between">
                 <MdCancel onClick={onClose}/>
                 <span>Edit Profile</span>
-            </div>
-            
+            </div> 
         </div>
-
-
 <form onSubmit={handleSubmit}>
   <button onClick={(e)=>handleSubmit(e)}>Save</button>
   <br/>
@@ -83,7 +79,6 @@ export function EditProfileModal({profile,onClose}) {
         </label>
         <br />
       </form>
-     
     </div>
   );
 }

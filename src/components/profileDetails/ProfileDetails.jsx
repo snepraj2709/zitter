@@ -1,13 +1,20 @@
 import { useState } from 'react';
-import { useUser } from '../../context/userContext';
 import { BiArrowBack } from '../../utils/icons';
 import {EditProfileModal} from '../../components/editProfileModal/EditProfileModal'
+import { useAuth } from '../../context/authContext';
+import {useUser} from '../../context/userContext'
 
 export function ProfileDetails({ user, totalPosts }) {
-  const { firstName, lastName, username, bio, website, backgroundImage,profileAvatar, createdAt } = user;
+  const { _id,firstName, lastName, username, bio, website, backgroundImage,profileAvatar, createdAt } = user;
+  const {loginUser,logoutHandler,token}=useAuth();
+  const {followUserHandler,unfollowUserHandler} =useUser();
   const [editProfileModal,setEditProfileModal]=useState(false);
-  const {isLoading,editUserDetailHandler,userDispatch,userState}=useUser();
 
+  const isLoginUserCurrentUser = loginUser.username===user.username;
+
+   const userAlreadyFollowing = user?.following?.some(
+    (user) => user?.username === loginUser?.username
+  ) 
   const createdDate = new Date(createdAt);
   const formattedDate = createdDate.getDate();
   const formattedMonth = createdDate.toLocaleString('default', { month: 'long' });
@@ -35,12 +42,30 @@ export function ProfileDetails({ user, totalPosts }) {
         <div className="flex flex-row justify-between items-center p-4">
           <img src={profileAvatar} className='w-20 h-20 rounded-full object-cover'/>
           <div className="flex flex-row">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={editHandler}>
-              Edit profile
-            </button>
-            <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-              Logout
-            </button>
+
+            {
+              isLoginUserCurrentUser?
+              (<div>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={editHandler}>Edit Profile</button>
+                 <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onClick={logoutHandler}>
+                  Logout
+                </button>
+              </div>     )         
+              :
+              (
+              <div>
+                {
+                  userAlreadyFollowing? <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={()=>unfollowUserHandler(_id,token)}>
+                    Unfollow
+                  </button>:
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={()=>followUserHandler(_id,token)}>
+                    Follow
+                  </button>
+                }
+              </div>
+             )
+            }
+          
           </div>
         </div>
         <div className="p-4">
@@ -49,9 +74,13 @@ export function ProfileDetails({ user, totalPosts }) {
           <p className="mt-2">{bio}</p>
           <a href={website} className="text-blue-500 hover:underline">{website}</a>
           <p>{formattedDate} {formattedMonth} {formattedYear}</p>
+          <div className='flex flex-row justify-start'>
+            <span>{user?.followers.length} Followers</span>
+            <span>{user?.following.length} Following</span>
+          </div>
         </div>
       </div>
-      {
+      {isLoginUserCurrentUser &&
         editProfileModal && <div>
             <EditProfileModal profile={user} onClose={closeModal}/>
         </div>

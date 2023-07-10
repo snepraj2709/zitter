@@ -19,8 +19,8 @@ export function PostCard({post}){
     return(
         <div className="flex flex-col border border-gray-500">
 			<div >
-                <div onClick={()=>navigate(`/profile${postByUser.username}`)} className='flex flex-row justify-between align-middle'>
-                    <div className='flex flex-row m-2 justify-evenly align-middle'>
+                <div onClick={()=>navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between align-middle'>
+                    <div className='flex flex-row m-2 justify-evenly align-middle' onClick={()=>navigate(`/profile/${username}`)}>
                         <UserAvatar user={postByUser}/>
                         <div className='flex flex-col'>
                             <span>{postByUser?.firstName} {postByUser?.lastName}</span>

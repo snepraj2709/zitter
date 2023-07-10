@@ -5,10 +5,8 @@ import {ProfileDetails} from '../../components/profileDetails/ProfileDetails';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/userContext';
 
-
 export default function Profile(){
   const current=useParams();
-   
     const {userState:{allUsers}}=useUser();
     const currentUser=allUsers.find((user)=>user?.username===current.username)
 
