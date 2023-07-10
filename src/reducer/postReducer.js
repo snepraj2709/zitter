@@ -38,7 +38,11 @@ export const postReducer = (state, { type, payload }) => {
     case EditPost:
       return { ...state, allPosts: payload };
     case FilterPosts:
-      return { ...state, filterType: payload };
+      return {
+        ...state,
+        allPosts: payload?.filteredPosts,
+        filterType: payload?.filterType,
+      };
     default:
       return state;
   }

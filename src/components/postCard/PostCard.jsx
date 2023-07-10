@@ -17,10 +17,10 @@ export function PostCard({post}){
     const postByUser= allUsers?.find((user)=>user.username===username)
 
     return(
-        <div className="flex flex-col border border-gray-500">
+        <div className="flex flex-col border border-gray-500 justify-items-center cursor-pointer">
 			<div >
                 <div onClick={()=>navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between align-middle'>
-                    <div className='flex flex-row m-2 justify-evenly align-middle' onClick={()=>navigate(`/profile/${username}`)}>
+                    <div className='flex flex-row m-2 justify-evenly items-center ' onClick={()=>navigate(`/profile/${username}`)}>
                         <UserAvatar user={postByUser}/>
                         <div className='flex flex-col'>
                             <span>{postByUser?.firstName} {postByUser?.lastName}</span>
@@ -28,15 +28,16 @@ export function PostCard({post}){
                         </div>
                         <span>{time}</span>
                     </div>
-                    <BsThreeDots/>
+                    <BsThreeDots className='w-6 h-6 justify-center p-1'/>
                 </div>
 				    
-				<div >
+				<div className='justify-center'>
 					<div
                         onClick={() => {
                             fetchSinglePost(_id);
                             navigate(`/post/${_id}`);
                         }}
+                        className='justify-center'
                         >
                         <img src={mediaURL} alt={mediaAlt}/>
 						<>{content}</>

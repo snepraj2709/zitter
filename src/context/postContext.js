@@ -177,15 +177,17 @@ export const PostProvider = ({ children }) => {
     );
   };
 
-  // const filterPostHandler = async username => {
-  // 	try {
-  // 		const filteredPosts = [];
-
-  // 		postDispatch({ type: FilterPosts, payload: filteredPosts });
-  // 	} catch (e) {
-  // 		console.log(e);
-  // 	}
-  // };
+  const filterPostHandler = async (filteredPosts, filterType) => {
+    try {
+      //console.log("filteredPosts", filteredPosts, "filterType", filterType);
+      postDispatch({
+        type: FilterPosts,
+        payload: { filteredPosts: filteredPosts, filterType: filterType },
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     fetchAllPosts();
@@ -206,6 +208,7 @@ export const PostProvider = ({ children }) => {
         dislikePostHandler,
         fetchAllPostsByUser,
         postLikedByLoggedUser,
+        filterPostHandler,
       }}>
       {children}
     </PostContext.Provider>
