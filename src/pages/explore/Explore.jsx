@@ -11,7 +11,7 @@ export default function Explore(){
   return (
     <div className="flex">
       <div className="w-1/4 border ">
-        <aside className="flex-shrink-0 center">
+        <aside className="flex-shrink-0 center sticky top-0">
           <Sidebar />
         </aside>
       </div>

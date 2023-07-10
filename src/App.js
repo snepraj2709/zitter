@@ -1,6 +1,6 @@
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/home/Home";
+import Home from "./pages/Home/Home";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import ToasterWrapper from "./components/toaster/ToasterWrapper";

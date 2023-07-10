@@ -8,17 +8,17 @@ export function Searchbar() {
   const { SearchUser } = ActionTypes;
 
   return (
-    <div>
-      <div className="flex items-center border border-gray-400 w-56 rounded-md ">
+    <div className="flex justify-center">
+      <div className="flex items-center rounded-md shadow-md bg-white">
         <input
           type="text"
           placeholder="Search Users"
-          className=" px-3 py-2 focus:outline-none"
+          className="px-3 py-2 focus:outline-none text-gray-600"
           onChange={(e) =>
             userDispatch({ type: SearchUser, payload: e.target.value })
           }
         />
-        <BiSearch className="text-gray-500" />
+        <BiSearch className="text-gray-600 w-5 h-5" />
       </div>
       {searchInput && <div><SearchedUserModal /></div>}
     </div>
