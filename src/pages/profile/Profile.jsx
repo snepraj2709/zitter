@@ -4,6 +4,7 @@ import {PostCard} from '../../components/postCard/PostCard';
 import {ProfileDetails} from '../../components/profileDetails/ProfileDetails';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/userContext';
+import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
 
 export default function Profile(){
   const current=useParams();
@@ -35,7 +36,7 @@ export default function Profile(){
         }
       </div>
       <div className="w-1/4 border hidden lg:block">
-        <div className="bg-gray-300">Suggested User</div>
+        <SuggestedUser/>
       </div>
     </div>):(<div>Loading...</div>)
     

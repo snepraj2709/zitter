@@ -21,7 +21,7 @@ export function SearchedUserModal() {
             className="bg-gray-800 flex flex-row items-center justify-center text-white p-2 cursor-pointer w-48 rounded"
           >
             <UserAvatar user={user} />
-            <div className="mt-2 text-center flex flex-col m-1 text-left">
+            <div className="mt-2 flex flex-col m-1 text-left">
               <span className="text-sm">{user.firstName + " " + user.lastName}</span>
               <span className="text-sm text-gray-300">{user.username}</span>
             </div>

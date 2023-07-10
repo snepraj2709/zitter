@@ -2,6 +2,7 @@ import { usePost } from "../../context/postContext";
 import {Sidebar} from '../../components/sidebar/Sidebar'
 import {Searchbar} from '../../components/search/Searchbar';
 import {PostCard} from '../../components/postCard/PostCard';
+import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
 
 export default function Explore(){
     
@@ -26,8 +27,8 @@ export default function Explore(){
           )):(<div>No Posts</div>)
         }
       </div>
-      <div className="w-1/4 border hidden lg:block">
-        <div className="bg-gray-300">Suggested User</div>
+     <div className="w-1/4 border hidden lg:block">
+        <SuggestedUser/>
       </div>
     </div>
   );

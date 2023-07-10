@@ -3,6 +3,7 @@ import {Searchbar} from '../../components/search/Searchbar';
 import {PostCard} from '../../components/postCard/PostCard';
 import { useUser } from '../../context/userContext';
 import { usePost } from '../../context/postContext';
+import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
 
 export default function Bookmark(){
     const {userState:{bookmarks}} =useUser();
@@ -25,11 +26,11 @@ export default function Bookmark(){
                 <PostCard post={post}/>
                 <hr/>
                 </div>
-            )):(<div>No Bookmarks</div>)
+            )):(<h1>No Bookmarks</h1>)
             }
         </div>
         <div className="w-1/4 border hidden lg:block">
-            <div className="bg-gray-300">Suggested User</div>
+            <SuggestedUser/>
         </div>
         </div>
     );
