@@ -3,35 +3,31 @@ import { useAuth } from '../../context/authContext';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 export default function Login() {
-  const { token, loginHandler } = useAuth();
+  const { token,loginHandler } = useAuth();
   const defaultLoginCred = {
     username: 'emilysmith',
     password: 'emily@123Smith'
   };
 
   const [login, setLogin] = useState({ username: '', password: '' });
+  const navigate=useNavigate();
   const location = useLocation();
-  const navigate = useNavigate();
 
-  const guestLoginHandler = () => {
-    loginHandler(defaultLoginCred.username, defaultLoginCred.password);
+   const loginFormSubmitHandler = (event) => {
+    event.preventDefault();
+    loginHandler(login.username,login.password);
+   
   };
 
-  const newLoginHandler = e => {
-    e.preventDefault();
-    console.log(login);
-    loginHandler(login.username, login.password);
-  };
-
-  useEffect(() => {
+   useEffect(() => {
     if (token) {
       navigate(location?.state?.from.pathname || '/', { replace: true });
     }
-  }, [token]);
+  }, []);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900">
-      <form className="w-80 bg-white shadow-md rounded px-8 pt-6 pb-8">
+      <form className="w-80 bg-white shadow-md rounded px-8 pt-6 pb-8" onSubmit={loginFormSubmitHandler}>
         <h2 className="text-2xl font-bold mb-4">Sign In</h2>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -69,15 +65,19 @@ export default function Login() {
         </div>
         <div className="flex items-center justify-between">
           <button
+          type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-            onClick={e => newLoginHandler(e)}
           >
             Login
           </button>
           <button
+            type="submit" 
             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            onClick={guestLoginHandler}
+            onClick={()=>setLogin({
+              ...login,
+              username: defaultLoginCred.username,
+              password: defaultLoginCred.password,
+            })}
           >
             Login as Guest
           </button>

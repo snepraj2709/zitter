@@ -7,12 +7,12 @@ import { useUser } from '../../context/userContext';
 export function ProfileDetails({ user, totalPosts }) {
   const { _id, firstName, lastName, username, bio, website, backgroundImage, profileAvatar, createdAt } = user;
   const { loginUser, logoutHandler, token } = useAuth();
-  const { followUserHandler, unfollowUserHandler } = useUser();
+  const { followUserHandler, unfollowUserHandler,handleBtnsClick } = useUser();
   const [editProfileModal, setEditProfileModal] = useState(false);
 
   const isLoginUserCurrentUser = loginUser.username === user.username;
 
-  const userAlreadyFollowing = user?.following?.some(
+  const userAlreadyFollowing = user?.followers?.some(
     (user) => user?.username === loginUser?.username
   );
 
@@ -63,14 +63,14 @@ export function ProfileDetails({ user, totalPosts }) {
                 {userAlreadyFollowing ? (
                   <button
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2"
-                    onClick={() => unfollowUserHandler(_id, token)}
+                    onClick={() => handleBtnsClick(400, unfollowUserHandler,_id, token)}
                   >
                     Unfollow
                   </button>
                 ) : (
                   <button
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2"
-                    onClick={() => followUserHandler(_id, token)}
+                    onClick={() => handleBtnsClick(400, followUserHandler,_id, token)}
                   >
                     Follow
                   </button>

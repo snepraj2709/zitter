@@ -4,7 +4,7 @@ import { UserAvatar } from '../../components/UserAvatar';
 import { useNavigate } from 'react-router-dom';
 
 export const SuggestedUser = () => {
-  const { userState: { allUsers },followUserHandler } = useUser();
+  const { userState: { allUsers },followUserHandler, handleBtnsClick} = useUser();
   const { loginUser,token } = useAuth();
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ export const SuggestedUser = () => {
                 <span className="text-sm text-gray-800">{user?.firstName + " " + user?.lastName}</span>
                 <span className="text-sm text-gray-800">{user?.username}</span>
               </div>
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded-lg mr-2 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onClick={()=>followUserHandler(user?._id,token)}>
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded-lg mr-2 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onClick={()=>handleBtnsClick(400, followUserHandler, user?._id,token)}>
                     Follow
                   </button>
             </div>

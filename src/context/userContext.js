@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useReducer,
   useState,
+  useRef,
 } from "react";
 import { toast } from "react-hot-toast";
 import { userReducer, initialUserState } from "../reducer/userReducer";
@@ -35,6 +36,7 @@ export const UserProvider = ({ children }) => {
     UpdateBookmark,
     UpdateFollow,
   } = ActionTypes;
+  const timerId = useRef();
 
   const [userState, userDispatch] = useReducer(userReducer, initialUserState);
 
@@ -147,7 +149,7 @@ export const UserProvider = ({ children }) => {
       } = await unfollowUserService(followUserId, token);
       if (status === 200 || status === 201) {
         userDispatch({ type: UpdateFollow, payload: [followUser, user] });
-        setLoginItems({ ...loginItems, loginUser: user });
+        // setLoginItems({ ...loginItems, loginUser: user });
         toast.success(`Unfollowed ${followUser.firstName}`);
       }
     } catch (e) {
@@ -166,6 +168,13 @@ export const UserProvider = ({ children }) => {
 
   const postAlreadyBookmarked = (postId) =>
     userState?.bookmarks?.find((id) => id === postId);
+
+  const handleBtnsClick = (delay, callback, ...args) => {
+    clearTimeout(timerId.current);
+    timerId.current = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
 
   useEffect(() => {
     fetchAllUsersData();
@@ -191,6 +200,7 @@ export const UserProvider = ({ children }) => {
         unfollowUserHandler,
         searchedUsers,
         postAlreadyBookmarked,
+        handleBtnsClick,
       }}>
       {children}
     </UserContext.Provider>

@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
         data: { createdUser, encodedToken },
         status,
       } = await SignUpService({ username, password, firstName, lastName });
-      console.log("createdUser", createdUser);
+      //console.log("createdUser", createdUser);
       if (status === 200 || status === 201) {
         // saving the loginItems in the localStorage
         localStorage.setItem(
@@ -95,12 +95,14 @@ export const AuthProvider = ({ children }) => {
     toast.success("Logged out successfully");
     navigate("/login");
   };
+
   return (
     <AuthContext.Provider
       value={{
         loginUser,
         token,
         loading,
+        loginItems,
         setLoginItems,
         loginHandler,
         logoutHandler,

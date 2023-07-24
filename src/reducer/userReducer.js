@@ -35,9 +35,12 @@ export const userReducer = (state, { type, payload }) => {
     case UpdateFollow:
       return {
         ...state,
-        allUsers: state.allUsers.map((user) =>
-          user._id === payload._id ? payload : user
-        ),
+        allUsers: state.allUsers.map((user) => {
+          const updatedCurrentUser = payload.find(
+            ({ _id }) => _id === user._id
+          );
+          return updatedCurrentUser ? updatedCurrentUser : user;
+        }),
       };
     case GetBookmarkPostsByUser:
       return { ...state, bookmarks: payload };
