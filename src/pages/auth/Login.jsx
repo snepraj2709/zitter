@@ -23,7 +23,7 @@ export default function Login() {
     if (token) {
       navigate(location?.state?.from.pathname || '/', { replace: true });
     }
-  }, []);
+  }, [token]);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900">
