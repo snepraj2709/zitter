@@ -22,7 +22,7 @@ export function PostCard({ post }) {
         <div onClick={() => navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between items-center'>
           <div className='flex flex-row m-2 items-center' onClick={() => navigate(`/profile/${username}`)}>
             <UserAvatar user={postByUser} />
-            <div className='flex flex-col'>
+            <div className='flex flex-col ml-2 '>
               <span className="text-base font-medium">{postByUser?.firstName} {postByUser?.lastName}</span>
               <span className="text-sm text-gray-500">@{postByUser?.username}</span>
             </div>
@@ -37,10 +37,10 @@ export function PostCard({ post }) {
               fetchSinglePost(_id);
               navigate(`/post/${_id}`);
             }}
-            className='flex flex-col items-center' // Updated to flex-column and items-center
+            className='flex flex-col items-center' 
           >
             <img src={mediaURL} alt={mediaAlt} className="max-w-full" />
-            <p className="text-md font-medium mt-2">{content}</p>
+            <p className="text-md font-normal mt-2">{content}</p>
           </div>
           <div className='flex flex-row justify-evenly mt-4 space-x-32'>
             <div className='flex flex-row items-center'>

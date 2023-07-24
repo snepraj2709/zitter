@@ -17,7 +17,7 @@ export default function Home() {
     ))
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center z-0">
       <div className="w-1/4 border ">
         <aside className="flex-shrink-0 center sticky top-0">
           <Sidebar />

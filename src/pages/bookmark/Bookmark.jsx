@@ -26,7 +26,7 @@ export default function Bookmark(){
                 <PostCard post={post}/>
                 <hr/>
                 </div>
-            )):(<h1>No Bookmarks</h1>)
+            )):(<h1 className="font-medium text-lg text-center mt-10">No Bookmarks</h1>)
             }
         </div>
         <div className="w-1/4 border hidden lg:block">
