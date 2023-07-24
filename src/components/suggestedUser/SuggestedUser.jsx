@@ -13,7 +13,7 @@ export const SuggestedUser = () => {
 });
 
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 m-3">
       <h1 className="flex flex-col font-bold text-xl p-2">Suggested User</h1>
       <div>
         {usersNotFollowedByLoginUser.length > 0 ? (
@@ -23,12 +23,14 @@ export const SuggestedUser = () => {
               onClick={() => {
                 navigate(`/profile/${user?.username}`);
               }}
-              className=" flex flex-row items-left justify-between align-items: center text-white p-2 cursor-pointer w-64 rounded border shadow shadow-blue-500/40 "
+              className=" flex flex-row items-left justify-between m-1 align-items: center text-white p-2 cursor-pointer w-64 rounded border shadow shadow-blue-300/30 "
             >
-              <UserAvatar user={user} />
+              <div className="flex flex-row">
+                <UserAvatar user={user} />
               <div className="ml-2 flex flex-col text-left">
                 <span className="font-medium text-base text-gray-800">{user?.firstName + " " + user?.lastName}</span>
                 <span className="text-sm text-gray-800">{user?.username}</span>
+              </div>
               </div>
                   <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded-lg h-10 mr-2 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onClick={()=>handleBtnsClick(400, followUserHandler, user?._id,token)}>
                     Follow
