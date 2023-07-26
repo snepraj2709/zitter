@@ -17,7 +17,7 @@ export function PostCard({ post }) {
   const postByUser = allUsers?.find((user) => user.username === username);
 
   return (
-    <div className="flex flex-col border border-gray-500 rounded-lg shadow-md p-4 cursor-pointer">
+    <div className="flex flex-col border border-gray-500 shadow-md p-4 cursor-pointer">
       <div>
         <div onClick={() => navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between items-center'>
           <div className='flex flex-row m-2 items-center' onClick={() => navigate(`/profile/${username}`)}>
@@ -31,15 +31,15 @@ export function PostCard({ post }) {
           <BsThreeDots className='w-6 h-6 justify-center p-1' />
         </div>
 
-        <div className="flex flex-col justify-center items-center mt-4">
+        <div className="flex flex-col justify-start mt-4 ml-10">
           <div
             onClick={() => {
               fetchSinglePost(_id);
               navigate(`/post/${_id}`);
             }}
-            className='flex flex-col items-center' 
+            className='flex flex-col items-start' 
           >
-            <img src={mediaURL} alt={mediaAlt} className="max-w-full" />
+            <img src={mediaURL} alt={mediaAlt} className="w-full h-auto object-contain" />
             <p className="text-md font-normal mt-2">{content}</p>
           </div>
           <div className='flex flex-row justify-evenly mt-4 space-x-32'>

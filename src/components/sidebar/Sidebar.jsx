@@ -9,7 +9,7 @@ const {loginUser,logoutHandler}=useAuth();
 
     return(
         <aside  className="sticky top-0">
-            <ul className="flex items-center sm:items-start justify-around sm:justify-start px-5 py-15 sm:py-4 sm:flex-col gap-3 sm:gap-2 tracking-wide grow space-y-1.5">
+            <ul className="flex items-center sm:items-start justify-center px-5 py-15 sm:py-4 sm:flex-col gap-3 sm:gap-2 tracking-wide grow space-y-1.5">
                 <li className="flex items-center">
                     <Link to="/" className="flex items-center">
                         <img src={zitterLogo} alt="zitter-logo" className="w-6 h-6" />
@@ -43,14 +43,14 @@ const {loginUser,logoutHandler}=useAuth();
                 </NavLink>
                 </li>
 
-                {/* <li className="flex items-center">
+                <li className="flex items-center">
                 <NavLink className="flex items-center">
                     <button className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md">
                     <MdAddCircle className="w-6 h-6" />
                     <span className="ml-2">New Post</span>
                     </button>
                 </NavLink>
-                </li> */}
+                </li>
 
                 <li className="flex items-center justify-center space-x-4 p-2 rounded-xl shadow shadow-blue-500/40 hover:shadow-indigo-500/40">
                 <UserAvatar user={loginUser} />
