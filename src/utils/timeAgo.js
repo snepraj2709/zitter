@@ -30,3 +30,9 @@ export const timeAgo = (date) => {
 
   return Math.floor(seconds) + " sec ago";
 };
+export const timeInSeconds = (date) => {
+  //console.log(date);
+  const newDate = new Date(date);
+  const seconds = Math.floor((new Date() - newDate) / 1000);
+  return seconds;
+};

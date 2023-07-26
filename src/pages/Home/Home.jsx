@@ -6,15 +6,20 @@ import {PostCard} from '../../components/postCard/PostCard';
 import { NewPost } from '../../components/newPost/NewPost';
 import {SortPost} from '../../components/sortPosts/SortPosts';
 import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
+import { useEffect,useState } from 'react';
 
 export default function Home() {
 
     const {loginUser}=useAuth();
-    const {isLoading,postState:{allPosts,filterType},postDispatch}=usePost();
+    const {postState:{allPosts}}=usePost();
+    const [posts,setPosts]=useState([])
 
-    const postsOfFollowers =allPosts.filter((post)=>(
-        loginUser.following.some(followedUser=>followedUser.username===post.username) || loginUser.username===post.username
+    useEffect(()=>{
+      const postsOfFollowers =allPosts?.filter((post)=>(
+        loginUser?.following.some(followedUser=>followedUser.username===post.username) || loginUser.username===post.username
     ))
+    setPosts(postsOfFollowers)
+    },[allPosts])
 
   return (
     <div className="flex justify-center z-0">
@@ -25,18 +30,17 @@ export default function Home() {
       </div>
       <div className="w-2/4 border border-gray-700 md:align-middle">
         <Searchbar/>
-        <SortPost/>
         <NewPost/>
-        {postsOfFollowers.length!==0?
-          postsOfFollowers.map((post)=>(
+        <SortPost/>
+        {posts?.length!==0?
+          posts?.map((post)=>(
             <div key={post._id} className="justify-items-center">
              <PostCard post={post}/>
-             <hr/>
             </div>
-          )):(<div>No Posts</div>)
+          )):(<div className="font-medium text-lg text-center mt-10">No Posts</div>)
         }
       </div>
-      <div className="w-1/4 border  sticky top-0 hidden lg:block">
+      <div className="w-1/4 border sticky top-0 hidden lg:block">
         <SuggestedUser/>
       </div>
     </div>

@@ -32,6 +32,7 @@ export const PostProvider = ({ children }) => {
     CreateNewPost,
     DeletePost,
     EditPost,
+    FilterPosts,
   } = ActionTypes;
 
   const [postState, postDispatch] = useReducer(postReducer, postInitialState);
@@ -177,21 +178,15 @@ export const PostProvider = ({ children }) => {
     );
   };
 
-  const filterPostHandler = async (filteredPosts, filterType) => {
-    try {
-      //console.log("filteredPosts", filteredPosts, "filterType", filterType);
-      postDispatch({
-        type: FilterPosts,
-        payload: { filteredPosts: filteredPosts, filterType: filterType },
-      });
-    } catch (e) {
-      console.log(e);
-    }
+  const filterPostHandler = (filteredPosts, filter) => {
+    postDispatch({
+      type: FilterPosts,
+      payload: { filteredPosts: filteredPosts, filterType: filter },
+    });
   };
 
   useEffect(() => {
     fetchAllPosts();
-    //getAllPosts()
   }, []);
 
   return (
