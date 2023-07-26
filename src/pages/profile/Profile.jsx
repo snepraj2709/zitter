@@ -32,7 +32,7 @@ export default function Profile(){
              <PostCard post={post}/>
              <hr/>
             </div>
-          )):(<div>No Posts</div>)
+          )):(<div className="font-medium text-lg text-center mt-10">No Posts</div>)
         }
       </div>
       <div className="w-1/4 border hidden lg:block">

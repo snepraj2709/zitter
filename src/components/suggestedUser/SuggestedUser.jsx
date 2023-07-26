@@ -38,7 +38,7 @@ export const SuggestedUser = () => {
             </div>
           ))
         ) : (
-          <div className="text-sm text-gray-800 p-2">Oops! No user found</div>
+          <h1 className="font-medium text-lg text-center mt-10">Oops! No user found</h1>
         )}
       </div>
     </div>
