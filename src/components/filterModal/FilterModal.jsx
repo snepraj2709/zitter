@@ -34,7 +34,7 @@ export const FilterModal=({onClose,filter, setFilter})=>{
 
     return(
         <div>
-          <div className=" text-sm flex flex-col gap-0.5 items-start py-1 px-1 shadow-lg border rounded border-gray-300 z-10 bg-slate-50">
+          <div className="text-sm flex flex-col gap-0.5 items-start py-1 px-1 shadow-lg border rounded border-gray-300 bg-slate-50">
               <MdCancel onClick={onClose} className='w-5 h-5 justify-center'/>
               <hr/>
                   <button

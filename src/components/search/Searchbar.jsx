@@ -8,7 +8,7 @@ export function Searchbar() {
   const { SearchUser } = ActionTypes;
 
   return (
-    <div className="flex justify-center  rounded bg-primary relative z-10">
+    <div className="flex justify-center bg-primary  ">
       <div className="flex justify-between items-center rounded-md shadow-md bg-white ">
         <input
           type="text"
@@ -20,7 +20,7 @@ export function Searchbar() {
         />
         <BiSearch className="text-gray-600 w-5 h-5" />
       </div>
-      {searchInput && <div className="absolute top-12 left-50 z-50"><SearchedUserModal /></div>}
+      {searchInput && <div className="absolute top-12 left-50 z-10"><SearchedUserModal /></div>}
     </div>
   );
 }

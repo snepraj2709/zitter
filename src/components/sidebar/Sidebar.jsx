@@ -1,12 +1,22 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom';
+import {useState} from 'react';
 import {AiFillHome,MdExplore,BiSolidBookmark,BiSolidUser,MdAddCircle,BsThreeDots,MdLogout} from '../../utils/icons'
 import { useAuth } from '../../context/authContext'
 import { zitterLogo } from '../../utils/constants';
 import { UserAvatar } from '../UserAvatar';
+import { NewPostModal } from '../newPostModal/NewPostModal';
 
 export  function Sidebar(){
 const {loginUser,logoutHandler}=useAuth();
+const [newPost,setNewPost]=useState(false);
 
+function openModal(){
+    setNewPost(true);
+}
+
+function closeModal(){
+    setNewPost(false);
+}
     return(
         <aside  className="sticky top-0">
             <ul className="flex items-center sm:items-start justify-center px-5 py-15 sm:py-4 sm:flex-col gap-3 sm:gap-2 tracking-wide grow space-y-1.5">
@@ -45,22 +55,25 @@ const {loginUser,logoutHandler}=useAuth();
 
                 <li className="flex items-center">
                 <NavLink className="flex items-center">
-                    <button className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md">
+                    <button className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md" onClick={openModal}>
                     <MdAddCircle className="w-6 h-6" />
                     <span className="ml-2">New Post</span>
                     </button>
                 </NavLink>
                 </li>
 
-                <li className="flex items-center justify-center space-x-4 p-2 rounded-xl shadow shadow-blue-500/40 hover:shadow-indigo-500/40">
+                <li className="flex items-center justify-center sm:space-x-1 lg:space-x-4 p-2 rounded-xl shadow shadow-blue-500/40 hover:shadow-indigo-500/40">
                 <UserAvatar user={loginUser} />
                 <div className="flex flex-col text-sm lg:inline">
-                    <p className="font-bold text-gray-900 text-xl">{loginUser?.firstName} {loginUser?.lastName}</p>
-                    <p className="font-normal text-gray-500 text-lg">{loginUser?.username}</p>
+                    <p className="font-bold text-gray-900 sm:text-md lg:text-xl">{loginUser?.firstName} {loginUser?.lastName}</p>
+                    <p className="font-normal text-gray-500 sm:text-md lg:text-xl">{loginUser?.username}</p>
                 </div>
-                <MdLogout className="ml-4 hidden lg:inline hover:scale-105" onClick={logoutHandler}/>
+                <MdLogout className="ml-4 lg:inline hover:scale-105 sm:w-6 sm:h-6 lg:w-10 lg:h-12" onClick={logoutHandler}/>
                 </li>
             </ul>  
+            {
+                newPost && <div className='fixed z-40'><NewPostModal onClose={closeModal}/></div>
+            }
         </aside>
     )
 }

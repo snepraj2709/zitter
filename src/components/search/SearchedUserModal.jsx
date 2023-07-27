@@ -5,7 +5,7 @@ import { UserAvatar } from "../UserAvatar";
 
 export function SearchedUserModal() {
   const navigate = useNavigate();
-  const { isLoading, searchedUsers, userDispatch } = useUser();
+  const { searchedUsers, userDispatch } = useUser();
   const { SearchUser } = ActionTypes;
 
   return (
