@@ -91,7 +91,9 @@ export function makeServer({ environment = "development" } = {}) {
       );
 
       // If you want to passthrough requests that are not handled by MirageJS
-      this.passthrough();
+      this.passthrough(
+        "https://api.cloudinary.com/v1_1/dqg4mckho/image/upload"
+      );
     },
   });
 }

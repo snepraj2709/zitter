@@ -40,8 +40,7 @@ export const postReducer = (state, { type, payload }) => {
     case FilterPosts:
       return {
         ...state,
-        allPosts: payload?.filteredPosts,
-        filterType: payload?.filterType,
+        filterType: payload,
       };
     default:
       return state;

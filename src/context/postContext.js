@@ -178,10 +178,10 @@ export const PostProvider = ({ children }) => {
     );
   };
 
-  const filterPostHandler = (filteredPosts, filter) => {
+  const filterPostHandler = (filter) => {
     postDispatch({
       type: FilterPosts,
-      payload: { filteredPosts: filteredPosts, filterType: filter },
+      payload: filter,
     });
   };
 

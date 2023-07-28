@@ -1,37 +1,16 @@
 import { usePost } from '../../context/postContext';
-import {useUser} from '../../context/userContext'
-import {useState} from 'react';
 import {MdCancel,FaArrowDown,FaArrowUp,
-  FaFire} from '../../utils/icons'
-  import { timeInSeconds } from '../../utils/timeAgo';
+  FaFire} from '../../utils/icons';
 
 export const FilterModal=({onClose,filter, setFilter})=>{
-    const {postState:{allPosts},filterPostHandler} =usePost();
-    const {handleBtnsClick}=useUser();
-    const [posts,setPosts]=useState(allPosts);
+    const {filterPostHandler} =usePost();
 
     function clickHandler(e){ 
-      setTimeout(() =>{
-          setFilter(e.target.value)
-          const filteredPosts=allPosts.sort((a,b)=>
-          timeInSeconds(a.createdAt)-timeInSeconds(b.createdAt)
-          )
-          const mostLiked=allPosts.sort((a,b)=>b.likes.likeCount-a.likes.likeCount)
-
-        switch(e.target.value){
-          case 'latest': setPosts(filteredPosts);
-          break;
-          case 'oldest': setPosts(filteredPosts.reverse());
-          break;
-          case 'trending': setPosts(mostLiked);
-          break;
-          default:
-          setPosts(allPosts);
-          filterPostHandler(posts,e.target.value)
-        }
-      },200)
+      setFilter(e.target.value);
+      filterPostHandler(e.target.value)
+      onClose()
     }
-
+    
     return(
         <div>
           <div className="text-sm flex flex-col gap-0.5 items-start py-1 px-1 shadow-lg border rounded border-gray-300 bg-slate-50">

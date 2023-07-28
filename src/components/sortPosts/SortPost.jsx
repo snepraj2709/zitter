@@ -1,7 +1,7 @@
 import { usePost } from '../../context/postContext';
 import { FaFilter } from '../../utils/icons';
 import { useState } from 'react';
-import { FilterModal } from '../../components/filterModal/FilterModal';
+import { FilterModal } from '../filterModal/FilterModal';
 
 export const SortPost = () => {
   const { postState: { filterType, allPosts } } = usePost();

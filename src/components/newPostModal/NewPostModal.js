@@ -2,8 +2,9 @@ import { useAuth } from "../../context/authContext";
 import { usePost } from "../../context/postContext";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { UploadWidget, uploadFile } from "../../utils/uploadImageToCloudinary";
+import { uploadFile } from "../../utils/uploadFile";
 import { MdCancel } from "../../utils/icons";
+import { BiSolidImageAdd } from "../../utils/icons";
 
 export const NewPostModal = ({ onClose }) => {
   const { token } = useAuth();
@@ -22,7 +23,6 @@ export const NewPostModal = ({ onClose }) => {
 
     if (newPostDetails.mediaURL) {
       const response = await uploadFile(imageFile);
-      console.log("response", response);
       createNewPostHandler(token, {
         ...newPostDetails,
         mediaURL: response.url,
@@ -33,6 +33,7 @@ export const NewPostModal = ({ onClose }) => {
     }
     toast.success("Added new post successfully", { id: newPostToast });
     setNewPostDetails({ content: "", mediaURL: "", mediaAlt: "" });
+    onClose();
   };
   return (
     <div className="fixed top-0 left-0  w-full h-full flex justify-center items-center bg-gray-500 bg-opacity-50 z-200">
@@ -52,7 +53,20 @@ export const NewPostModal = ({ onClose }) => {
             }
           />
           <div className="flex flex-row justify-end items-center py-2">
-            <UploadWidget />
+            <label className="cursor-pointer">
+              <input
+                type="file"
+                accept="image/*, video/*"
+                className="hidden"
+                onChange={(e) =>
+                  setNewPostDetails({
+                    ...newPostDetails,
+                    mediaURL: e.target.files[0],
+                  })
+                }
+              />
+              <BiSolidImageAdd className="w-8 h-8" />
+            </label>
             <button
               className="flex items-center px-5 ml-3 h-8 bg-blue-500 text-white rounded-md"
               onClick={(e) => submitPostHandler(e)}>
