@@ -17,7 +17,7 @@ export function PostCard({ post }) {
   const postByUser = allUsers?.find((user) => user.username === username);
 
   return (
-    <div className="flex flex-col border border-gray-500 shadow-md p-4 cursor-pointer">
+    <div className="flex flex-col shadow-md p-4 cursor-pointer">
       <div>
         <div onClick={() => navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between items-center'>
           <div className='flex flex-row m-2 items-center' onClick={() => navigate(`/profile/${username}`)}>

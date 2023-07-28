@@ -17,17 +17,17 @@ export default function PostDetails(){
 
   return (
     !isLoading?(<div className="flex">
-      <div className="w-1/4 border ">
+      <div className="w-1/4">
         <aside className="flex-shrink-0 center sticky top-0">
           <Sidebar />
         </aside>
       </div>
-      <div className="w-2/4 border border-gray-700 md:items-center">
+      <div className="w-2/4 h-full border border-gray-700 md:items-center">
         <PostCard post={currentPost}/>
         <CommentCard comments={currentPost?.comments} user={postByUser}/>
         <hr/>
       </div>
-      <div className="w-1/4 border hidden lg:block">
+      <div className="w-1/4 hidden lg:block">
         <SuggestedUser/>
       </div>
     </div>):(<div>Loading...</div>)

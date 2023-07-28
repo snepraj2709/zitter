@@ -18,7 +18,10 @@ export default function Bookmark(){
             </aside>
         </div>
         <div className="w-2/4 border border-gray-700 md:items-center">
-            <Searchbar/>
+            <div className="flex flex-row justify-between border-b-2 border-gray-500 pb-2">
+                <h2 className="font-bold text-lg text-center m-3">Bookmark</h2>
+                <Searchbar className='w-full'/>
+            </div>
 
             {bookmarkedPosts.length!==0?
             bookmarkedPosts.map((post)=>(
