@@ -20,11 +20,11 @@ function closeModal(){
 }
 return(
     <div>
-        <div className="flex flex-col items-center sticky top-0">
-            <div className="flex sm:items-start justify-center px-5 py-15 sm:py-4 sm:flex-col gap-3 sm:gap-2 tracking-wide grow space-y-1.5 items-center md:items:start">
+        <div className="flex flex-col items-center min-h-screen fixed left-0 top-0">
+            <div className="flex sm:items-start px-5 py-15 sm:flex-col gap-3 grow space-y-1.5 items-center md:items:start">
                 <li className="flex items-center ">
                 <Link to="/" className="flex items-center">
-                    <img src={zitterLogo} alt="zitter-logo" className="w-6 h-6" />
+                    <img src={zitterLogo} alt="zitter-logo" className="w-10 h-10" />
                     <span className="ml-2 font-bold text-2xl p-2">Zitter</span>
                 </Link>
                 </li>
@@ -85,7 +85,7 @@ return(
                 </li>
             </div>
 
-            <div className="flex sm:space-x-1 lg:space-x-4 p-2 rounded-xl shadow shadow-blue-500/40 hover:shadow-indigo-500/40">
+            <div className="flex sm:space-x-1 lg:space-x-4 p-2 rounded-xl shadow-md shadow-blue-300/40 hover:shadow-indigo-500/40">
                 <UserAvatar user={loginUser} />
                     <div className="flex flex-col text-sm lg:inline">
                         <p className="font-bold text-gray-900 sm:text-md lg:text-lg">{loginUser?.firstName} {loginUser?.lastName}</p>

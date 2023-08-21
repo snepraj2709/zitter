@@ -29,8 +29,9 @@ export function NewPost(){
         setNewPostDetails({content:'', mediaURL:'', mediaAlt:''})
     }
 
-    return(
-        <div className="flex p-3 border-b-gray-500">
+return(
+    <div className="flex border border-t-gray-500">
+        <div className="flex flex-col w-full p-3">
             <UserAvatar user={loginUser}/>
             <div className="flex flex-col w-full m-2">
                 <div>
@@ -72,6 +73,7 @@ export function NewPost(){
                 <button className="flex items-center px-5 ml-3 h-8 bg-blue-500 text-white rounded-md shadow-md" onClick={(e)=>submitPostHandler(e)}>Post</button>
                 </div>
             </div>
-        </div>
+        </div> 
+    </div>
     )
 }

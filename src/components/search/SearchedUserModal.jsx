@@ -9,7 +9,7 @@ export function SearchedUserModal() {
   const { SearchUser } = ActionTypes;
 
   return (
-    <div className=" w-48 rounded shadow-blue-500/40 border bg-slate-50">
+    <div className="w-48 rounded shadow-blue-500/40 bg-slate-50 border border-gray-200">
       {
         searchedUsers.length!==0?searchedUsers.map((user) => (
           <div

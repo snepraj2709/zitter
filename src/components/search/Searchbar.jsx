@@ -9,7 +9,7 @@ export function Searchbar() {
 
   return (
     <div className="flex h-12">
-      <div className="flex items-center rounded-lg w-full px-2 mr-5 bg-gray-100 shadow-md">
+      <div className="flex items-center rounded-lg w-full px-2 mr-5 bg-gray-100">
         <BiSearch className="text-gray-600 w-6 h-6 mr-2"/>
         <input
           type="text"
@@ -19,7 +19,7 @@ export function Searchbar() {
             userDispatch({ type: SearchUser, payload: e.target.value })
           }
         />
-        {searchInput && <div className="absolute top-12 z-20"><SearchedUserModal /></div>}
+        {searchInput && <div className="absolute top-12 z-20"><SearchedUserModal /></div>} 
       </div>
     </div>
   );

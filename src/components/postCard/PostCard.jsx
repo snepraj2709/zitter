@@ -17,7 +17,7 @@ export function PostCard({ post }) {
   const postByUser = allUsers?.find((user) => user.username === username);
 
   return (
-    <div className="flex flex-col shadow-sm p-2 md:p-4 cursor-pointer min-w-full">
+    <div className="flex flex-col shadow-sm p-2 md:p-4 cursor-pointer min-w-full border border-b-gray-500">
       <div>
         <div onClick={() => navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between items-center'>
           <div className='flex flex-row m-2 items-center' onClick={() => navigate(`/profile/${username}`)}>
@@ -64,9 +64,7 @@ export function PostCard({ post }) {
             </div>
           </div>
         </div>
-        <hr className="border-gray-300"/>
       </div>
-      
     </div>
   );
 }
