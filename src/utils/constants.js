@@ -7,6 +7,8 @@ export const defaulCoverPic =
 export const zitterLogo =
   "https://res.cloudinary.com/dqg4mckho/image/upload/v1688745954/Zitter-project-2/zitter-logo_zgqnln.png";
 
+export const defaultWebsite = "https://zitter.netlify.app/";
+
 export const ActionTypes = {
   //user actions
   GetAllUsers: "GET_ALL_USERS",

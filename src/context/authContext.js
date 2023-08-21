@@ -3,6 +3,11 @@ import { createContext, useContext, useState } from "react";
 import { LoginService, SignUpService } from "../services/authServices";
 import toast from "react-hot-toast";
 import { useNavigate, useLocation } from "react-router-dom";
+import {
+  DefaultUserAvatar,
+  defaulCoverPic,
+  defaultWebsite,
+} from ".././utils/constants";
 
 export const AuthContext = createContext();
 
@@ -60,24 +65,27 @@ export const AuthProvider = ({ children }) => {
         data: { createdUser, encodedToken },
         status,
       } = await SignUpService({ username, password, firstName, lastName });
-      //console.log("createdUser", createdUser);
+
+      const newUser = {
+        ...createdUser,
+        backgroundImage: defaulCoverPic,
+        profileAvatar: DefaultUserAvatar,
+        website: defaultWebsite,
+      };
       if (status === 200 || status === 201) {
-        // saving the loginItems in the localStorage
         localStorage.setItem(
           "loginItems",
           JSON.stringify({
             token: encodedToken,
-            loginUser: createdUser,
+            loginUser: newUser,
           })
         );
         setLoginItems({
           ...loginItems,
-          loginUser: createdUser,
+          loginUser: newUser,
           token: encodedToken,
         });
-
-        //welcome loginUser with toast
-        toast.success(`Hi, ${createdUser.firstName}!`, {
+        toast.success(`Hi, ${newUser.firstName}!`, {
           icon: "👋",
         });
         navigate("/", { replace: true });
