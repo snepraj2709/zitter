@@ -5,6 +5,7 @@ import {ProfileDetails} from '../../components/profileDetails/ProfileDetails';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/userContext';
 import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
+import MobileSidebar from '../../components/sidebar/MobileSidebar';
 
 export default function Profile(){
   const current=useParams();
@@ -19,12 +20,12 @@ export default function Profile(){
 
   return (
     !isLoading?(<div className="flex">
-      <div className="w-1/4 border ">
+      <div className="w-1/4 hidden md:block ">
         <aside className="flex-shrink-0 center sticky top-0">
           <Sidebar />
         </aside>
       </div>
-      <div className="w-2/4 border border-gray-700 md:items-center">
+      <div className="md:w-2/4 border border-gray-700 md:items-center min-h-screen">
         <ProfileDetails user={currentUser} totalPosts={postsOfCurrentUser}/>
         {postsOfCurrentUser.length!==0?
           postsOfCurrentUser?.map((post)=>(
@@ -34,6 +35,7 @@ export default function Profile(){
             </div>
           )):(<div className="font-medium text-lg text-center mt-10">No Posts</div>)
         }
+        <MobileSidebar className='md:hidden'/>
       </div>
       <div className="w-1/4 border hidden lg:block">
         <SuggestedUser/>
