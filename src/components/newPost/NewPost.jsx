@@ -29,10 +29,10 @@ export function NewPost(){
         setNewPostDetails({content:'', mediaURL:'', mediaAlt:''})
     }
     return(
-        <div className=" flex flex-row w-full p-3">
+        <div className="flex p-3">
             <UserAvatar user={loginUser}/>
-            <div className="flex flex-col w-full m-2 ">
-                 <textarea placeholder='Whats happening!' value={newPostDetails?.content} className="border border-gray-800"
+            <div className="flex flex-col w-full m-2">
+                 <textarea placeholder='Whats happening!' value={newPostDetails?.content} className="border border-gray-500 p-2"
                  rows={2}
                  onChange={(e)=>setNewPostDetails({...newPostDetails,content: e.target.value})}/>
                  <div className="flex flex-row justify-end items-center py-2">
@@ -43,9 +43,9 @@ export function NewPost(){
                         className="hidden"
                         onChange={(e)=>setNewPostDetails({...newPostDetails, mediaURL: e.target.files[0]})}
                         />
-                        <BiSolidImageAdd className="w-8 h-8" />
+                        <BiSolidImageAdd className="w-9 h-9" />
                     </label>
-                    <button className="flex items-center px-5 ml-3 h-8 bg-blue-500 text-white rounded-md" onClick={(e)=>submitPostHandler(e)}>Post</button>
+                    <button className="flex items-center px-5 ml-3 h-8 bg-blue-500 text-white rounded-md shadow-md" onClick={(e)=>submitPostHandler(e)}>Post</button>
                  </div>
             </div>
         </div>

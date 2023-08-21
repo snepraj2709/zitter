@@ -9,18 +9,16 @@ export function Searchbar() {
 
   return (
     <div className="flex h-12">
-      <div className="flex items-center rounded-lg w-full px-2 mr-5">
+      <div className="flex items-center rounded-lg w-full px-2 mr-5 bg-gray-100 shadow-md">
+        <BiSearch className="text-gray-600 w-6 h-6 mr-2"/>
         <input
           type="text"
           placeholder="Search Users"
-          className="focus:outline-none text-gray-600 px-2 py-3 w-full rounded-md bg-slate-50 shadow-lg pr-12"
+          className="outline-none text-gray-600 w-full bg-transparent flex-1"
           onChange={(e) =>
             userDispatch({ type: SearchUser, payload: e.target.value })
           }
         />
-        {/* <div className=" flex items-center absolute right-24 left-20"> 
-          <BiSearch className="text-gray-600 w-6 h-6"/>
-        </div> */}
         {searchInput && <div className="absolute top-12 z-20"><SearchedUserModal /></div>}
       </div>
     </div>

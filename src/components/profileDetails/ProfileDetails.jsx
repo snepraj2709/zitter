@@ -3,12 +3,15 @@ import { BiArrowBack } from '../../utils/icons';
 import { EditProfileModal } from '../../components/editProfileModal/EditProfileModal';
 import { useAuth } from '../../context/authContext';
 import { useUser } from '../../context/userContext';
+import { useNavigate } from 'react-router-dom';
 
 export function ProfileDetails({ user, totalPosts }) {
   const { _id, firstName, lastName, username, bio, website, backgroundImage, profileAvatar, createdAt } = user;
   const { loginUser, logoutHandler, token } = useAuth();
   const { followUserHandler, unfollowUserHandler,handleBtnsClick } = useUser();
   const [editProfileModal, setEditProfileModal] = useState(false);
+
+  const navigate=useNavigate();
 
   const isLoginUserCurrentUser = loginUser.username === user.username;
 
@@ -32,7 +35,7 @@ export function ProfileDetails({ user, totalPosts }) {
   return (
     <div className="container mx-auto">
       <div className="flex flex-row items-center p-4">
-        <BiArrowBack className="mr-2 text-lg text-gray-600" />
+        <BiArrowBack className="mr-2 text-lg text-gray-600 cursor-pointer" onClick={()=>navigate(-1)}/>
         <div className="flex flex-col">
           <span className="text-lg font-semibold">{firstName} {lastName}</span>
           <p className="text-gray-500">{totalPosts.length} posts</p>
@@ -44,9 +47,9 @@ export function ProfileDetails({ user, totalPosts }) {
           <img src={profileAvatar} className="w-20 h-20 rounded-full object-cover" />
           <div className="flex flex-row">
             {isLoginUserCurrentUser ? (
-              <div>
+              <div className="flex">
                 <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2"
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-1 md:py-2 md:px-4 rounded mr-2"
                   onClick={editHandler}
                 >
                   Edit Profile
@@ -106,6 +109,7 @@ export function ProfileDetails({ user, totalPosts }) {
           </div>
         </div>
       )}
+      <hr className="border border-gray-100"/>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export function PostCard({ post }) {
   const postByUser = allUsers?.find((user) => user.username === username);
 
   return (
-    <div className="flex flex-col shadow-md p-4 cursor-pointer">
+    <div className="flex flex-col shadow-md p-2 md:p-4 cursor-pointer min-w-full">
       <div>
         <div onClick={() => navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between items-center'>
           <div className='flex flex-row m-2 items-center' onClick={() => navigate(`/profile/${username}`)}>
@@ -42,7 +42,7 @@ export function PostCard({ post }) {
             <img src={mediaURL} alt={mediaAlt} className="w-full h-auto object-contain" />
             <p className="text-md font-normal mt-2">{content}</p>
           </div>
-          <div className='flex flex-row justify-evenly mt-4 space-x-32'>
+          <div className='flex flex-row justify-between mt-4'>
             <div className='flex flex-row items-center'>
               {postLikedByLoggedUser(loginUser, post) ? (
                 <FcLike onClick={() => dislikePostHandler(_id, token)} className="mr-1 w-5 h-5"/>

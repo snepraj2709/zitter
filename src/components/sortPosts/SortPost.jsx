@@ -18,7 +18,7 @@ export const SortPost = () => {
 
   return (
     <div className="p-3">
-      <div className="flex flex-row  justify-between items-center border border-gray-500 rounded-md shadow-md bg-white p-2 ml-10 mr-2 h-10">
+      <div className="flex flex-row justify-between items-center border border-gray-500 rounded-md shadow-md bg-white p-2 ml-10 mr-2 h-10">
         <p className="text-gray-700 text-lg font-medium mx-3 flex-grow-1">{filter.toUpperCase()}</p>
         {filterModal ? (
         <div className="mt-2 -mr-1 z-10" >
