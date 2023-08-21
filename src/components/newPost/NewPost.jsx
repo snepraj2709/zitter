@@ -4,7 +4,7 @@ import { usePost } from "../../context/postContext";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import {uploadFile} from '../../utils/uploadFile';
-import { BiSolidImageAdd } from "../../utils/icons";
+import { BiSolidImageAdd, MdCancel } from "../../utils/icons";
 
 export function NewPost(){
     const {loginUser,token}=useAuth();
@@ -28,25 +28,49 @@ export function NewPost(){
          toast.success("Added new post successfully", { id: newPostToast });
         setNewPostDetails({content:'', mediaURL:'', mediaAlt:''})
     }
+
     return(
-        <div className="flex p-3">
+        <div className="flex p-3 border-b-gray-500">
             <UserAvatar user={loginUser}/>
             <div className="flex flex-col w-full m-2">
-                 <textarea placeholder='Whats happening!' value={newPostDetails?.content} className="border border-gray-500 p-2"
-                 rows={2}
-                 onChange={(e)=>setNewPostDetails({...newPostDetails,content: e.target.value})}/>
-                 <div className="flex flex-row justify-end items-center py-2">
-                    <label className="cursor-pointer">
-                        <input
-                        type="file"
-                        accept="image/*, video/*"
-                        className="hidden"
-                        onChange={(e)=>setNewPostDetails({...newPostDetails, mediaURL: e.target.files[0]})}
-                        />
-                        <BiSolidImageAdd className="w-9 h-9" />
-                    </label>
-                    <button className="flex items-center px-5 ml-3 h-8 bg-blue-500 text-white rounded-md shadow-md" onClick={(e)=>submitPostHandler(e)}>Post</button>
-                 </div>
+                <div>
+                    <textarea
+                        placeholder='Whats happening!'
+                        value={newPostDetails?.content}
+                        className="p-2 border-none outline-none"
+                        rows={1}
+                        onChange={(e) => setNewPostDetails({ ...newPostDetails, content: e.target.value })}
+                    />
+                    {newPostDetails.mediaURL && (
+                        <div className="relative">
+                            {newPostDetails.mediaURL.type.includes('video') ? (
+                            <video controls className="w-full h-auto rounded-md">
+                                <source src={URL.createObjectURL(newPostDetails.mediaURL)} type="video/mp4" />
+                            </video>
+                        ) : (
+                            <div>
+                                <img src={URL.createObjectURL(newPostDetails.mediaURL)} alt={newPostDetails.mediaAlt} className="w-full h-auto rounded-md"/>
+                            </div>
+                        )}
+                        <button type="button" onClick={()=>setNewPostDetails({...newPostDetails,mediaURL:null})} className="absolute top-1.5 left-2 text-lg">
+                            <MdCancel className="w-8 h-8"/>
+                        </button>
+                    </div> 
+                    )}   
+                </div>
+
+                <div className="flex flex-row justify-end items-center py-2">
+                <label className="cursor-pointer">
+                    <input
+                    type="file"
+                    accept="image/*, video/*"
+                    className="hidden"
+                    onChange={(e)=>setNewPostDetails({...newPostDetails, mediaURL: e.target.files[0]})}
+                    />
+                    <BiSolidImageAdd className="w-9 h-9" />
+                </label>
+                <button className="flex items-center px-5 ml-3 h-8 bg-blue-500 text-white rounded-md shadow-md" onClick={(e)=>submitPostHandler(e)}>Post</button>
+                </div>
             </div>
         </div>
     )

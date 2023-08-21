@@ -40,7 +40,7 @@ export function PostCard({ post }) {
             className='flex flex-col items-start' 
           >
             <img src={mediaURL} alt={mediaAlt} className="w-full h-auto object-contain" />
-            <p className="text-md font-normal mt-2">{content}</p>
+            <p className="text-md font-normal mt-2 break-all">{content}</p>
           </div>
           <div className='flex flex-row justify-between mt-4'>
             <div className='flex flex-row items-center'>
