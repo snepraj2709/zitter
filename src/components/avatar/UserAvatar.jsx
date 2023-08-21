@@ -1,4 +1,4 @@
-import { DefaultUserAvatar } from "../utils/constants";
+import { DefaultUserAvatar } from "../../utils/constants";
 
 export function UserAvatar({ user }) {
   const avatar = user?.profileAvatar;

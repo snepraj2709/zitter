@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/userContext";
 import { ActionTypes } from "../../utils/constants";
 import { MdCancel } from "../../utils/icons";
@@ -6,7 +5,6 @@ import { useAuth } from "../../context/authContext";
 import { useState } from 'react';
 
 export function EditProfileModal({ profile, onClose }) {
-  const navigate = useNavigate();
   const { isLoading, editUserDetailHandler, userState, userDispatch } = useUser();
   const { SearchUser } = ActionTypes;
   const { token } = useAuth();

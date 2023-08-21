@@ -1,4 +1,4 @@
-import { UserAvatar } from '../UserAvatar';
+import { UserAvatar } from '../avatar/UserAvatar';
 import { useUser } from '../../context/userContext';
 import { usePost } from '../../context/postContext';
 import { FcLike, FiHeart, BiSolidBookmark, BsBookmark, FaComment, BsThreeDots } from '../../utils/icons';
@@ -17,7 +17,7 @@ export function PostCard({ post }) {
   const postByUser = allUsers?.find((user) => user.username === username);
 
   return (
-    <div className="flex flex-col shadow-md p-2 md:p-4 cursor-pointer min-w-full">
+    <div className="flex flex-col shadow-sm p-2 md:p-4 cursor-pointer min-w-full">
       <div>
         <div onClick={() => navigate(`/profile/${postByUser.username}`)} className='flex flex-row justify-between items-center'>
           <div className='flex flex-row m-2 items-center' onClick={() => navigate(`/profile/${username}`)}>
@@ -31,7 +31,7 @@ export function PostCard({ post }) {
           <BsThreeDots className='w-6 h-6 justify-center p-1' />
         </div>
 
-        <div className="flex flex-col justify-start mt-4 ml-10">
+        <div className="flex flex-col justify-start mt-4 ml-10 py-3">
           <div
             onClick={() => {
               fetchSinglePost(_id);
@@ -64,7 +64,9 @@ export function PostCard({ post }) {
             </div>
           </div>
         </div>
+        <hr className="border-gray-300"/>
       </div>
+      
     </div>
   );
 }

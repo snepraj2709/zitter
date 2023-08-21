@@ -11,7 +11,7 @@ import {
 } from "../../utils/icons";
 import { useAuth } from "../../context/authContext";
 
-function MobileSidebar() {
+export function MobileSidebar() {
   const { loginUser, logoutHandler } = useAuth();
   const classes = "flex items-center";
   return (
@@ -55,17 +55,6 @@ function MobileSidebar() {
         }}>
         <BiSolidUser className="w-6 h-6" />
       </NavLink>
-
-      {/* <NavLink
-        className={({ isActive }) => {
-          return isActive
-            ? `${classes} text-blue-500`
-            : `${classes} text-gray-800`;
-        }}>
-        <MdAddCircle className="w-6 h-6" />
-      </NavLink> */}
     </div>
   );
 }
-
-export default MobileSidebar;

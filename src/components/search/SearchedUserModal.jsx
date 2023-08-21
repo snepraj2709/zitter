@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/userContext";
 import { ActionTypes } from "../../utils/constants";
-import { UserAvatar } from "../UserAvatar";
+import { UserAvatar } from "../avatar/UserAvatar";
 
 export function SearchedUserModal() {
   const navigate = useNavigate();

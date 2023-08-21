@@ -1,13 +1,7 @@
-import { Sidebar } from '../../components/sidebar/Sidebar';
 import { useAuth } from '../../context/authContext';
 import {usePost} from '../../context/postContext';
-import {PostCard} from '../../components/postCard/PostCard';
-import { NewPost } from '../../components/newPost/NewPost';
-import {SortPost} from '../../components/sortPosts/SortPost';
-import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
 import { sortPosts } from '../../utils/sortPosts';
-import PageHeader from '../../components/pageHeader/PageHeader';
-import MobileSidebar from '../../components/sidebar/MobileSidebar';
+import {Sidebar,PostCard,NewPost,SuggestedUser,SortPost,PageHeader,MobileSidebar} from '../../components/index';
 
 export default function Home() {
   const {loginUser}=useAuth();

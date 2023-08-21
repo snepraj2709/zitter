@@ -1,6 +1,6 @@
 import { Toaster } from "react-hot-toast"
 
-export default function ToasterWrapper(){
+export function ToasterWrapper(){
     return(
         <Toaster
         position="top-center"

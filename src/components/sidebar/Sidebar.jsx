@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {AiFillHome,MdExplore,BiSolidBookmark,BiSolidUser,MdAddCircle,BsThreeDots,MdLogout} from '../../utils/icons'
 import { useAuth } from '../../context/authContext'
 import { zitterLogo } from '../../utils/constants';
-import { UserAvatar } from '../UserAvatar';
+import { UserAvatar } from '../avatar/UserAvatar';
 import { NewPostModal } from '../newPostModal/NewPostModal';
 
 export  function Sidebar(){
@@ -29,14 +29,14 @@ return(
                 </Link>
                 </li>
                 <li className="flex items-center">
-                    <NavLink to="/" className={({ isActive }) => {
+                <NavLink to="/" className={({ isActive }) => {
                 return isActive
                     ? `${classes} text-blue-500`
                     : `${classes} text-gray-800`;
                 }}>
-                        <AiFillHome className="w-6 h-6" />
-                        <span className="ml-2 text-xl hidden md:inline-flex">Home</span>
-                    </NavLink>
+                    <AiFillHome className="w-6 h-6" />
+                    <span className="ml-2 text-xl hidden md:inline-flex">Home</span>
+                </NavLink>
                 </li>
                 <li className="flex items-center">
                 <NavLink to="/explore" className={({ isActive }) => {

@@ -1,11 +1,7 @@
-import { Sidebar } from '../../components/sidebar/Sidebar';
 import {usePost} from '../../context/postContext';
-import {PostCard} from '../../components/postCard/PostCard';
-import {ProfileDetails} from '../../components/profileDetails/ProfileDetails';
 import { useParams } from 'react-router-dom';
 import { useUser } from '../../context/userContext';
-import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
-import MobileSidebar from '../../components/sidebar/MobileSidebar';
+import {Sidebar,PostCard,SuggestedUser,ProfileDetails,MobileSidebar} from '../../components/index';
 
 export default function Profile(){
   const current=useParams();
@@ -37,7 +33,7 @@ export default function Profile(){
         }
         <MobileSidebar className='md:hidden'/>
       </div>
-      <div className="w-1/4 border hidden lg:block">
+      <div className="w-1/4 hidden md:block">
         <SuggestedUser/>
       </div>
     </div>):(<div>Loading...</div>)

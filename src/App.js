@@ -1,16 +1,15 @@
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Login from "./pages/auth/Login";
-import SignUp from "./pages/auth/SignUp";
-import ToasterWrapper from "./components/toaster/ToasterWrapper";
-import PrivateRoute from "./components/route/PrivateRoute";
-import Explore from "./pages/explore/Explore";
-import Bookmark from "./pages/bookmark/Bookmark";
-import Profile from "./pages/profile/Profile";
-import PostDetails from "./pages/post/PostDetails";
-import NotFound from "./components/NotFound";
-import Mockman from "mockman-js";
+import {
+  Login,
+  SignUp,
+  Home,
+  Explore,
+  Bookmark,
+  Profile,
+  PostDetails,
+} from "./pages/index";
+import { ToasterWrapper, PrivateRoute, NotFound } from "./components/index";
 
 export default function App() {
   return (
@@ -19,7 +18,6 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/mockman" element={<Mockman />} />
 
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />

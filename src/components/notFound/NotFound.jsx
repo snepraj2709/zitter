@@ -1,6 +1,6 @@
 import { useNavigate ,Link} from "react-router-dom"
 
-export default function NotFound(){
+export  function NotFound(){
     const navigate = useNavigate();
     return(
         <div>

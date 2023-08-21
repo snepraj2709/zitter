@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/authContext";
 import { useUser } from "../../context/userContext";
-import { UserAvatar } from '../../components/UserAvatar';
+import { UserAvatar } from '../../components/avatar/UserAvatar';
 import { useNavigate } from 'react-router-dom';
 import {shuffleArray} from '../../utils/shuffleArray'
 

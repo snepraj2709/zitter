@@ -1,33 +1,35 @@
-import { Sidebar } from '../../components/sidebar/Sidebar';
 import {usePost} from '../../context/postContext';
-import {PostCard} from '../../components/postCard/PostCard';
-import {ProfileDetails} from '../../components/profileDetails/ProfileDetails';
-import { useParams } from 'react-router-dom';
+import {BiArrowBack} from '../../utils/icons';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../../context/userContext';
-import { CommentCard } from '../../components/commentCard/CommentCard';
-import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser'
+import {Sidebar,PostCard,SuggestedUser,CommentCard,MobileSidebar} from '../../components/index';
+
 
 export default function PostDetails(){
   const {postId}=useParams();
-    const {isLoading,postState:{allPosts}}=usePost();
-    const {userState:{allUsers}}=useUser();
-    const currentPost=allPosts.find((post)=>post?._id===postId)
+  const navigate=useNavigate();
+  const {isLoading,postState:{allPosts}}=usePost();
+  const {userState:{allUsers}}=useUser();
+  const currentPost=allPosts.find((post)=>post?._id===postId)
 
-    const postByUser= allUsers?.find((user)=>user?.username===currentPost?.username)
+  const postByUser= allUsers?.find((user)=>user?.username===currentPost?.username)
 
   return (
     !isLoading?(<div className="flex">
-      <div className="w-1/4">
+      <div className="w-1/4 hidden md:block">
         <aside className="flex-shrink-0 center sticky top-0">
           <Sidebar />
         </aside>
       </div>
-      <div className="w-2/4 h-full border border-gray-700 md:items-center">
+      <div className="md:w-2/4 border border-gray-700 md:items-center min-h-screen">
+        <div className="bg-gray-100 p-4">
+          <BiArrowBack className="mr-2 text-lg text-gray-600 cursor-pointer" onClick={()=>navigate(-1)}/>
+        </div>
         <PostCard post={currentPost}/>
         <CommentCard comments={currentPost?.comments} user={postByUser}/>
-        <hr/>
+        <MobileSidebar className='md:hidden'/>
       </div>
-      <div className="w-1/4 hidden lg:block">
+      <div className="w-1/4 hidden md:block">
         <SuggestedUser/>
       </div>
     </div>):(<div>Loading...</div>)

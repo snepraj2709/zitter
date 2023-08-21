@@ -1,14 +1,8 @@
 import { usePost } from "../../context/postContext";
-import {Sidebar} from '../../components/sidebar/Sidebar'
-import {PostCard} from '../../components/postCard/PostCard';
-import {SuggestedUser} from '../../components/suggestedUser/SuggestedUser';
-import {SortPost} from '../../components/sortPosts/SortPost'
-import { sortPosts } from '../../utils/sortPosts';
-import PageHeader from "../../components/pageHeader/PageHeader";
-import MobileSidebar from "../../components/sidebar/MobileSidebar";
+import {sortPosts } from '../../utils/sortPosts';
+import {Sidebar,PostCard,SuggestedUser,SortPost,PageHeader,MobileSidebar} from '../../components/index';
 
 export default function Explore(){
-    
     const {postState:{allPosts,filterType}}=usePost();
     const postsOnExplore= sortPosts(allPosts,filterType)
 
@@ -31,7 +25,7 @@ export default function Explore(){
         }
          <MobileSidebar className='md:hidden'/>
       </div>
-     <div className="w-1/4 hidden md:block">
+      <div className="w-1/4 hidden md:block">
         <SuggestedUser/>
       </div>
     </div>

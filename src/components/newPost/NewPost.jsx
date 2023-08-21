@@ -1,5 +1,5 @@
 import { useAuth } from "../../context/authContext"
-import { UserAvatar } from "../UserAvatar";
+import { UserAvatar } from "../avatar/UserAvatar";
 import { usePost } from "../../context/postContext";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
