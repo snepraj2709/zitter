@@ -14,15 +14,17 @@ export default function Bookmark(){
                 <Sidebar />
                 </aside>
             </div>
-            <div className="md:w-2/4 border border-gray-700 md:items-center min-h-screen">
+            <div className="flex flex-col md:w-2/4 border border-gray-700 md:items-center min-h-screen">
                 <PageHeader page='Bookmarks'/>
-                {bookmarkedPosts.length!==0?
+                <div className="flex-grow border border-gray-700 md:items-center">
+                    {bookmarkedPosts.length!==0?
                 bookmarkedPosts.map((post)=>(
                     <div key={post._id}>
                     <PostCard post={post}/>
                     </div>
-                )):(<h1 className="font-medium text-lg text-center mt-10">No Bookmarks</h1>)
-                }
+                )):(<h1 className="font-medium text-lg text-center mt-5">No Bookmarks</h1>)
+                }</div>
+                
                 <MobileSidebar className='md:hidden'/>
             </div>
             <div className="w-1/4 hidden md:block">

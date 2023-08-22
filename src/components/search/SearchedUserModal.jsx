@@ -9,7 +9,7 @@ export function SearchedUserModal() {
   const { SearchUser } = ActionTypes;
 
   return (
-    <div className="w-48 rounded shadow-blue-500/40 bg-slate-50 border border-gray-200">
+    <div className="rounded shadow-blue-500/40 bg-slate-50 border border-gray-200">
       {
         searchedUsers.length!==0?searchedUsers.map((user) => (
           <div
@@ -18,12 +18,12 @@ export function SearchedUserModal() {
               navigate(`/profile/${user.username}`);
               userDispatch({ type: SearchUser, payload: "" });
             }}
-            className=" flex flex-row items-center justify-left ml-2 p-2 text-gray-800 cursor-pointer w-48  "
+            className="flex flex-row items-center justify-left ml-2 p-2 text-gray-800 cursor-pointer w-48  "
           >
-            <UserAvatar user={user} />
-            <div className=" flex flex-col ml-2 text-left">
-              <span className="font-medium text-base">{user.firstName + " " + user.lastName}</span>
-              <span className="text-sm text-gray-800">{user.username}</span>
+            <UserAvatar user={user} className='w-8 h-8'/>
+            <div className="flex flex-col ml-2 text-left">
+              <span className="font-medium text-sm">{user.firstName + " " + user.lastName}</span>
+              <span className="text-xs text-gray-800">{user.username}</span>
             </div>
           </div>
         )):(

@@ -19,7 +19,7 @@ export function Searchbar() {
             userDispatch({ type: SearchUser, payload: e.target.value })
           }
         />
-        {searchInput && <div className="absolute top-12 z-20"><SearchedUserModal /></div>} 
+        {searchInput && <div className="absolute top-12"><SearchedUserModal /></div>} 
       </div>
     </div>
   );

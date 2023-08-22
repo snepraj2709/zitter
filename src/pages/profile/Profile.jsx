@@ -21,9 +21,10 @@ export default function Profile(){
           <Sidebar />
         </aside>
       </div>
-      <div className="md:w-2/4 border border-gray-700 md:items-center min-h-screen">
+      <div className="flex flex-col md:w-2/4 border border-gray-700 md:items-center min-h-screen">
         <ProfileDetails user={currentUser} totalPosts={postsOfCurrentUser}/>
-        {postsOfCurrentUser.length!==0?
+        <div className="flex-grow md:items-center">
+          {postsOfCurrentUser.length!==0?
           postsOfCurrentUser?.map((post)=>(
             <div key={post._id}>
              <PostCard post={post}/>
@@ -31,6 +32,7 @@ export default function Profile(){
             </div>
           )):(<div className="font-medium text-lg text-center mt-10">No Posts</div>)
         }
+        </div>
         <MobileSidebar className='md:hidden'/>
       </div>
       <div className="w-1/4 hidden md:block">

@@ -21,12 +21,14 @@ export default function PostDetails(){
           <Sidebar />
         </aside>
       </div>
-      <div className="md:w-2/4 border border-gray-700 md:items-center min-h-screen">
+      <div className="flex flex-col md:w-2/4 border border-gray-700 md:items-center min-h-screen">
         <div className="bg-gray-100 p-4">
           <BiArrowBack className="mr-2 text-lg text-gray-600 cursor-pointer" onClick={()=>navigate(-1)}/>
         </div>
-        <PostCard post={currentPost}/>
+        <div className="flex-grow  md:items-center">
+          <PostCard post={currentPost}/>
         <CommentCard comments={currentPost?.comments} user={postByUser}/>
+        </div>
         <MobileSidebar className='md:hidden'/>
       </div>
       <div className="w-1/4 hidden md:block">

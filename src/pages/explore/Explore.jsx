@@ -13,16 +13,18 @@ export default function Explore(){
           <Sidebar />
         </aside>
       </div>
-      <div className="md:w-2/4 border border-gray-700 md:items-center min-h-screen">
+      <div className="flex flex-col md:w-2/4 border border-gray-700 md:items-center min-h-screen">
         <PageHeader page='Explore'/>
         <SortPost/>
-        {postsOnExplore.length!==0?
+          <div className="flex-grow md:items-center">
+            {postsOnExplore.length!==0?
           postsOnExplore.map((post)=>(
             <div key={post._id}>
              <PostCard post={post}/>
             </div>
           )):(<div className="font-medium text-lg text-center mt-10">No Posts</div>)
         }
+          </div>
          <MobileSidebar className='md:hidden'/>
       </div>
       <div className="w-1/4 hidden md:block">

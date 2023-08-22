@@ -23,20 +23,20 @@ const suggestedUsers=shuffleArray(usersNotFollowedByLoginUser)
           suggestedUsers?.map((user) => (
             <div
               key={user?.id}
-              className=" flex flex-row items-left justify-between m-1 align-items: center text-white p-2 cursor-pointer w-64 rounded border shadow shadow-blue-300/30 "
+              className="flex flex-row items-left justify-between text-white p-2 cursor-pointer rounded border shadow shadow-blue-300/30 "
             >
               <div className="flex flex-row" onClick={() => {
                 navigate(`/profile/${user?.username}`);
               }}>
-                <UserAvatar user={user} />
+                <UserAvatar user={user} className='w-8 h-8'/>
                 <div className="ml-2 flex flex-col text-left">
-                  <span className="font-medium text-base text-gray-800">{user?.firstName + " " + user?.lastName}</span>
-                  <span className="text-sm text-gray-800">{user?.username}</span>
+                  <span className="font-medium text-sm text-gray-800">{user?.firstName + " " + user?.lastName}</span>
+                  <span className="text-xs text-gray-800">{user?.username}</span>
                 </div>
               </div>
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-2 rounded-lg h-10 mr-2 shadow shadow-blue-500/40 hover:shadow-indigo-500/40" onClick={()=>handleBtnsClick(400, followUserHandler, user?._id,token)}>
-                    Follow
-                  </button>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-lg h-8 shadow shadow-blue-500/40 hover:shadow-indigo-500/40 my-auto" onClick={()=>handleBtnsClick(400, followUserHandler, user?._id,token)}>
+                  Follow
+                </button>
             </div>
           ))
         ) : (

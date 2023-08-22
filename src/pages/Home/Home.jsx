@@ -18,8 +18,9 @@ export default function Home() {
           <Sidebar />
         </aside>
       </div>
-      <div className="md:w-2/4 border border-gray-700 md:items-center min-h-screen">
+      <div className="flex flex-col md:w-2/4 border border-gray-700 md:items-center min-h-screen">
         <PageHeader page='Home'/>
+        <div className="flex-grow md:items-center">
         <NewPost/>
         <SortPost/>
         {postsOnHome?.length!==0?
@@ -29,6 +30,7 @@ export default function Home() {
             </div>
           )):(<div className="font-medium text-lg text-center mt-10">No Posts</div>)
         }
+        </div>
         <MobileSidebar className='md:hidden'/>
       </div>
       <div className="w-1/4 hidden md:block">

@@ -20,7 +20,7 @@ function closeModal(){
 }
 return(
     <div>
-        <div className="flex flex-col items-center min-h-screen fixed left-0 top-0">
+        <div className="flex flex-col items-center min-h-screen left-0 top-0">
             <div className="flex sm:items-start px-5 py-15 sm:flex-col gap-3 grow space-y-1.5 items-center md:items:start">
                 <li className="flex items-center ">
                 <Link to="/" className="flex items-center">
@@ -35,7 +35,7 @@ return(
                     : `${classes} text-gray-800`;
                 }}>
                     <AiFillHome className="w-6 h-6" />
-                    <span className="ml-2 text-xl hidden md:inline-flex">Home</span>
+                    <span className="ml-2 text-lg hidden md:inline-flex">Home</span>
                 </NavLink>
                 </li>
                 <li className="flex items-center">
@@ -45,7 +45,7 @@ return(
                     : `${classes} text-gray-800`;
                 }}>
                     <MdExplore className="w-6 h-6" />
-                    <span className="ml-2 text-xl hidden md:inline-flex">Explore</span>
+                    <span className="ml-2 text-lg hidden md:inline-flex">Explore</span>
                 </NavLink>
                 </li>
 
@@ -56,7 +56,7 @@ return(
                     : `${classes} text-gray-800`;
                 }}>
                     <BiSolidBookmark className="w-6 h-6" />
-                    <span className="ml-2 text-xl hidden md:inline-flex">Bookmark</span>
+                    <span className="ml-2 text-lg hidden md:inline-flex">Bookmark</span>
                 </NavLink>
                 </li>
 
@@ -67,7 +67,7 @@ return(
                     : `${classes} text-gray-800`;
                 }}>
                     <BiSolidUser className="w-6 h-6" />
-                    <span className="ml-2 text-xl hidden md:inline-flex">Profile</span>
+                    <span className="ml-2 text-lg hidden md:inline-flex">Profile</span>
                 </NavLink>
                 </li>
 
@@ -85,11 +85,11 @@ return(
                 </li>
             </div>
 
-            <div className="flex sm:space-x-1 lg:space-x-4 p-2 rounded-xl shadow-md shadow-blue-300/40 hover:shadow-indigo-500/40">
-                <UserAvatar user={loginUser} />
-                    <div className="flex flex-col text-sm lg:inline">
-                        <p className="font-bold text-gray-900 sm:text-md lg:text-lg">{loginUser?.firstName} {loginUser?.lastName}</p>
-                        <p className="font-normal text-gray-500 sm:text-md lg:text-xl">{loginUser?.username}</p>
+            <div className="flex p-2 rounded-xl bg-gray-100 m-2 shadow-md shadow-blue-300/40 hover:shadow-indigo-500/40">
+                <UserAvatar user={loginUser} className='w-9 h-9'/>
+                    <div className="flex flex-col lg:inline">
+                        <p className="font-bold text-gray-900 text-md lg:text-base">{loginUser?.firstName} {loginUser?.lastName}</p>
+                        <p className="font-normal text-gray-500 text-sm lg:text-sm">{loginUser?.username}</p>
                     </div>
                 <MdLogout className="ml-4 lg:inline my-auto hover:scale-105 sm:w-6 sm:h-6 lg:w-8 lg:h-8 cursor-pointer" onClick={logoutHandler}/>
             </div>

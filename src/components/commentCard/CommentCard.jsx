@@ -8,30 +8,29 @@ export const CommentCard = ({ comments, user }) => {
 
   return (
     <div className="flex flex-col">
-      {comments?.map(({ _id,commentData, firstName, lastName, username, profileAvatar, createdAt }) => (
+      {comments.length!==0?comments?.map(({ _id,commentData, firstName, lastName, username, profileAvatar, createdAt }) => (
         <div key={_id} className="mt-1 pl-10 shadow-sm">
           <div onClick={() => navigate(`/profile/${username}`)} className="flex flex-row justify-between align-middle">
-            <div className="flex flex-row m-2 justify-evenly align-middle" onClick={() => navigate(`/profile/${username}`)}>
+            <div className="flex flex-row m-1 justify-evenly " onClick={() => navigate(`/profile/${username}`)}>
               <img
                 src={profileAvatar}
                 alt={firstName}
-                className="w-10 h-10 rounded-full object-cover"
+                className="w-8 h-8 rounded-full object-cover"
               />
               <div className="flex flex-col align-middle mx-2">
-                <span className="text-base font-medium">{firstName} {lastName}</span>
-                <span className="text-sm text-gray-500">@{username}</span>
+                <span className="text-sm font-medium">{firstName} {lastName}</span>
+                <span className="text-xs text-gray-500">@{username}</span>
               </div>
-              <span className="pl-2">{timeAgo(createdAt)}</span>
+              <span className="pl-2 text-xs text-gray-500 my-auto">{timeAgo(createdAt)}</span>
             </div>
             <BsThreeDots className="m-4"/>
           </div>
           <div>
-            <p>{commentData}</p>
+            <p className="text-xs">{commentData}</p>
           </div>
           <br/>
         </div>
-      ))}
-      <hr className="border-gray-300"/>
+      )):(<h1 className="text-sm text-center mt-5">No Comments</h1>)}
     </div>
   );
 };
